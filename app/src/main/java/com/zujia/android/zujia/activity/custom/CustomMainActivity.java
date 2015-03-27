@@ -21,7 +21,7 @@ public class CustomMainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_custom_main);
 
         // 获取TabHost对象
-        TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
+        final TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
         // 如果没有继承TabActivity时，通过该种方法加载启动tabHost
         tabHost.setup();
 
@@ -42,7 +42,17 @@ public class CustomMainActivity extends ActionBarActivity {
 
         tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator(view).setContent(
                         R.id.tab4));
-        //tabHost.getTabWidget().getChildAt(3).setBackgroundResource(R.drawable.tab_me_selector);
+
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener(){
+            public void onTabChanged(String tabId) {
+
+                tabHost.getTabWidget().getChildAt(0).setAlpha(255);
+                tabHost.getTabWidget().getChildAt(1).setAlpha(255);
+                tabHost.getTabWidget().getChildAt(2).setAlpha(255);
+                tabHost.getTabWidget().getChildAt(3).setAlpha(255);
+                tabHost.getCurrentTabView().setAlpha(0);
+            }
+        });
     }
 
 

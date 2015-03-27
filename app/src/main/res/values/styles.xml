@@ -4,9 +4,10 @@
     <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
         <!-- Customize your theme here. -->
     <!--</style>-->
-    <style name="AppTheme" parent="Theme.AppCompat.Light"></style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"></style>
 
     <style name="DarkThem" parent="Theme.AppCompat.Light.DarkActionBar"></style>
+
     <style name="WithMarginMainLayoutStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -56,15 +57,6 @@
         <item name="android:textSize">@dimen/small_text_size</item>-->
     </style>
 
-    <style name="PersonalHeaderLayoutStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">10dp</item>
-        <item name="android:background">@drawable/item_background</item>
-        <item name="android:orientation">horizontal</item>
-        <item name="android:padding">1dp</item>
-    </style>
-
     <style name="InlineIconStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -77,10 +69,9 @@
     </style>
 
 
-    <style name="NoneMarginMainLayoutStyle">
+    <style name="MainLayoutStyle">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:background">@drawable/item_background</item>
         <item name="android:padding">1dp</item>
         <item name="android:orientation">vertical</item>
     </style>
@@ -91,16 +82,19 @@
         <item name="android:layout_margin">10dp</item>
     </style>
 
-    <style name="TableRowStyle">
-
+    <style name="MainTitleFont">
+        <item name="android:textSize">@dimen/abc_text_size_large_material</item>
     </style>
-
-    <style name="LargeMenuFont">
-        <item name="android:textSize">@dimen/abc_text_size_menu_material</item>
-    </style>
-
-    <style name="MediumMenuFont">
+    <style name="SubtitleFont">
         <item name="android:textSize">@dimen/abc_text_size_subtitle_material_toolbar</item>
+
+    </style>
+    <style name="ItemNameFont">
+        <item name="android:textColor">@color/grey_font</item>
+        <item name="android:textSize">@dimen/abc_text_size_small_material</item>
+    </style>
+    <style name="ItemContentFont">
+        <item name="android:textSize">@dimen/abc_text_size_small_material</item>
     </style>
 
     <style name="OrangeBtn">

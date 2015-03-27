@@ -21,7 +21,7 @@
 
     <LinearLayout
         android:orientation="vertical"
-        style="@style/NoneMarginMainLayoutStyle">
+        style="@style/MainLayoutStyle">
 
         <RelativeLayout style="@style/NoneMarginItemStyle">
 

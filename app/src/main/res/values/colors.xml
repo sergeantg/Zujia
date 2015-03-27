@@ -3,4 +3,5 @@
     <color name="orange">#f4632e</color>
     <color name="white_bg">#ffffff</color>
     <color name="brown_bg">#00101e</color>
+    <color name="grey_font">#666666</color>
 </resources>
