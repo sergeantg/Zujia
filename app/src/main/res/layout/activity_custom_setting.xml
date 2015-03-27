@@ -1,0 +1,99 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zujia.android.zujia.activity.SettingActivity">
+
+    <LinearLayout style="@style/WithMarginMainLayoutStyle" >
+
+        <RelativeLayout style="@style/ItemStyle">
+
+            <TextView
+                style="@style/ItemTextStyle"
+                android:text="@string/txtV_setting_toast" />
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/ItemRightIconStyle"
+                android:id="@+id/switch1" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/WithMarginMainLayoutStyle" >
+
+        <RelativeLayout style="@style/ItemStyle">
+
+            <TextView
+                style="@style/ItemTextStyle"
+                android:text="@string/txtV_setting_alarm" />
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/ItemRightIconStyle"/>
+
+        </RelativeLayout>
+
+        <View style="@style/ItemSplitter" />
+
+        <RelativeLayout style="@style/ItemStyle">
+
+            <TextView
+                style="@style/ItemTextStyle"
+                android:text="@string/txtV_setting_vibration" />
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/ItemRightIconStyle"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/WithMarginMainLayoutStyle" >
+
+        <RelativeLayout style="@style/ItemStyle">
+
+            <TextView
+                style="@style/ItemTextStyle"
+                android:text="@string/txtV_setting_clear_cache" />
+
+            <ImageView
+                style="@style/ItemRightIconStyle"
+                android:src="@drawable/mail_arrow" />
+        </RelativeLayout>
+
+        <View style="@style/ItemSplitter" />
+
+        <RelativeLayout style="@style/ItemStyle">
+
+            <TextView
+                style="@style/ItemTextStyle"
+                android:text="@string/txtV_setting_clear_history" />
+
+            <ImageView
+                style="@style/ItemRightIconStyle"
+                android:src="@drawable/mail_arrow" />
+        </RelativeLayout>
+
+        <View style="@style/ItemSplitter" />
+
+        <RelativeLayout style="@style/ItemStyle">
+
+            <TextView
+                style="@style/ItemTextStyle"
+                android:text="@string/txtV_setting_change_password" />
+
+            <ImageView
+                style="@style/ItemRightIconStyle"
+                android:src="@drawable/mail_arrow" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
