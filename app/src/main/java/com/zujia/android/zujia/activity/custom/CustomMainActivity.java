@@ -34,14 +34,14 @@ public class CustomMainActivity extends ActionBarActivity {
         tabHost.addTab(tabHost.newTabSpec("tab1")
                 .setIndicator("租家帮", getResources().getDrawable(R.drawable.zujiabang)).setContent(
                 R.id.tab3));
-        //tabHost.addTab(tabHost.newTabSpec("tab1")
-        //        .setIndicator("我", getResources().getDrawable(R.drawable.me)).setContent(
-        //        R.id.tab4));
+       // tabHost.addTab(tabHost.newTabSpec("tab1")
+          //      .setIndicator("我", getResources().getDrawable(R.drawable.me_meitu_1)).setContent(
+            //    R.id.tab4));
 
         android.view.View view = getLayoutInflater().inflate(R.layout.custom_tab_me, null);
 
         tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator(view).setContent(
-                        R.id.tab4));
+                      R.id.tab4));
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener(){
             public void onTabChanged(String tabId) {
@@ -50,7 +50,7 @@ public class CustomMainActivity extends ActionBarActivity {
                 tabHost.getTabWidget().getChildAt(1).setAlpha(255);
                 tabHost.getTabWidget().getChildAt(2).setAlpha(255);
                 tabHost.getTabWidget().getChildAt(3).setAlpha(255);
-                tabHost.getCurrentTabView().setAlpha(0);
+                tabHost.getCurrentTabView();
             }
         });
     }
