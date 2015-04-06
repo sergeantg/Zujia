@@ -16,42 +16,50 @@
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:id="@+id/editText4" />
+            android:id="@+id/editText_search_key" />
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <RadioGroup
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            >
-
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroup_search"
+            android:orientation="horizontal">
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/search_one_room"
-                android:id="@+id/radioButton"
-                android:layout_weight="1" />
+                android:id="@+id/radio_one_room"
+                android:button="@null"
+                android:layout_weight="1"
+                android:onClick="radioButtonClick"/>
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/search_two_rooms"
-                android:id="@+id/radioButton2"
-                android:layout_weight="1" />
+                android:id="@+id/radio_two_room"
+                android:button="@null"
+                android:layout_weight="1"
+                android:onClick="radioButtonClick"/>
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/search_three_rooms"
-                android:id="@+id/radioButton3"
-                android:layout_weight="1" />
+                android:id="@+id/radio_three_room"
+                android:button="@null"
+                android:layout_weight="1"
+                android:onClick="radioButtonClick"/>
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/search_more_rooms"
-                android:id="@+id/radioButton4"
-                android:layout_weight="1" />
-        </LinearLayout>
+                android:id="@+id/radio_more_room"
+                android:button="@null"
+                android:layout_weight="1"
+                android:onClick="radioButtonClick"/>
+        </RadioGroup>
+
     </LinearLayout>
 
     <Button
@@ -61,7 +69,8 @@
         android:id="@+id/button2"
         android:gravity="center_horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/searchLayout" />
+        android:layout_below="@+id/searchLayout"
+        android:onClick="searchClick"/>
 
     <Button
         android:layout_width="match_parent"
@@ -71,6 +80,7 @@
         android:gravity="center_horizontal"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/button2" />
+        android:layout_below="@+id/button2"
+        android:onClick="aroundClick"/>
 
 </RelativeLayout>

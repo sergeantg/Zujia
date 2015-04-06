@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:id="@+id/imgV_tab_me"
         android:src="@drawable/me_meitu_1" />
 
     <TextView
@@ -16,6 +17,7 @@
         android:layout_height="wrap_content"
         android:text="我"
         android:layout_gravity="center_horizontal"
-        android:textColor="#ffffff"/>
+        android:textColor="#ffffff"
+        android:id="@+id/txtV_tab_me"/>
 
 </LinearLayout>

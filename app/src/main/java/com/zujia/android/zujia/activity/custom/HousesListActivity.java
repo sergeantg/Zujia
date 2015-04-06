@@ -1,41 +1,56 @@
 package com.zujia.android.zujia.activity.custom;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.ListActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.SimpleAdapter;
 
 import com.zujia.android.zujia.R;
+import com.zujia.android.zujia.service.RestApi;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
-public class HousesListActivity extends ActionBarActivity {
+public class HousesListActivity extends ListActivity {
+
+    private String key;
+    private int rooms;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_houses_list);
+        //setContentView(R.layout.activity_houses_list);
+
+        Bundle bundle = getIntent().getExtras();
+        key = bundle.getString("search_key");
+        rooms = bundle.getInt("rooms");
+
+        SimpleAdapter adapter = new SimpleAdapter(this, getData(), R.layout.activity_houses_list, new String[] { "textView17",  "imageView6" }, new int[] { R.id.textView17, R.id.imageView6 });
+        setListAdapter(adapter);
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_houses_list, menu);
-        return true;
-    }
+    private List<Map<String, Object>> getData(){
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        Map<String, Object> map = new HashMap<String, Object>();
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        map.put("textView17", "how");
+        map.put("imageView6", R.drawable.   avater);
+        list.add(map);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        map = new HashMap<String, Object>();
+        map.put("textView17", "are");
+        map.put("imageView6", R.drawable.avater);
+        list.add(map);
 
-        return super.onOptionsItemSelected(item);
+        map = new HashMap<String, Object>();
+        map.put("textView17", "you");
+        map.put("imageView6", R.drawable.avater);
+        list.add(map);
+
+        return list;
     }
 }

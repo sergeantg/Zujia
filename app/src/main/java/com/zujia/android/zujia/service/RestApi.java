@@ -1,4 +1,4 @@
-package com.zujia.android.zujia.tools;
+package com.zujia.android.zujia.service;
 
 import retrofit.RestAdapter;
 import retrofit.http.GET;
