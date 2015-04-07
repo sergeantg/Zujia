@@ -15,30 +15,27 @@
         android:text="New Text"
         android:id="@+id/textView16" />
 
-    <LinearLayout
-        android:orientation="vertical"
-        style="@style/MainLayoutStyle">
 
-        <RelativeLayout style="@style/NoneMarginItemStyle">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView5"
-                style="@style/ItemLeftIconStyle"
-                android:src="@drawable/location_icon" />
+    <RelativeLayout style="@style/NoneMarginItemStyle">
 
-            <TextView
-                style="@style/ItemTextStyle"
-                android:text="南开区八里台"
-                android:layout_toRightOf="@+id/imageView5" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView5"
+            style="@style/ItemLeftIconStyle"
+            android:src="@drawable/location_icon" />
 
-            <ImageView
-                style="@style/ItemRightIconStyle"
-                android:src="@drawable/mail_arrow" />
-        </RelativeLayout>
+        <TextView
+            style="@style/ItemTextStyle"
+            android:text="南开区八里台"
+            android:layout_toRightOf="@+id/imageView5" />
 
-    </LinearLayout>
+        <ImageView
+            style="@style/ItemRightIconStyle"
+            android:src="@drawable/mail_arrow" />
+    </RelativeLayout>
+
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -60,9 +57,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/textView19"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"/>
+                style="@style/ItemContentFont"
+                android:id="@+id/txtVSize" />
         </TableRow>
 
         <TableRow
@@ -81,9 +78,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/textView21"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"/>
+                style="@style/ItemContentFont"
+                android:id="@+id/txtVRent" />
         </TableRow>
 
         <TableRow
@@ -102,9 +99,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/textView23"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"/>
+                style="@style/ItemContentFont"
+                android:id="@+id/txtVFloor" />
         </TableRow>
 
         <TableRow
@@ -123,9 +120,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/textView25"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"/>
+                style="@style/ItemContentFont"
+                android:id="@+id/txtVDate" />
         </TableRow>
 
         <TableRow
@@ -144,9 +141,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/textView27"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"/>
+                style="@style/ItemContentFont"
+                android:id="@+id/txtVDecoration" />
         </TableRow>
 
         <TableRow
@@ -165,9 +162,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/textView29"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"/>
+                style="@style/ItemContentFont"
+                android:id="@+id/txtVFurniture" />
         </TableRow>
 
         <TableRow
@@ -186,9 +183,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/textView31"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"/>
+                style="@style/ItemContentFont"
+                android:id="@+id/txtVAppliance" />
         </TableRow>
 
         <TableRow
@@ -207,9 +204,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/textView33"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"/>
+                style="@style/ItemContentFont"
+                android:id="@+id/txtVOther" />
         </TableRow>
 
         <TableRow
@@ -228,9 +225,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/textView35"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"/>
+                style="@style/ItemContentFont"
+                android:id="@+id/txtVDescribtion" />
         </TableRow>
     </TableLayout>
 

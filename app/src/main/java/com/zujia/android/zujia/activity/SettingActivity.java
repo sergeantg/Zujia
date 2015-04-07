@@ -1,13 +1,13 @@
 package com.zujia.android.zujia.activity;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.zujia.android.zujia.R;
 
-public class SettingActivity extends ActionBarActivity {
+public class SettingActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

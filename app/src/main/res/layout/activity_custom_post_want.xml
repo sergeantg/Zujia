@@ -7,83 +7,109 @@
     tools:context="com.zujia.android.zujia.activity.custom.CustomPostWantActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txtV_post_want_location"
-        android:id="@+id/txtVLocation" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/eTxtLocation" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txtV_post_want_money"
-        android:id="@+id/txtVMoney" />
-
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
+        style="@style/ItemStyle"
+        android:orientation="vertical">
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/eTxtMoney" />
+            android:text="@string/txtV_post_want_location"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/eTxtLocation" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        style="@style/ItemStyle"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtV_post_want_money"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/eTxtMoney"
+                android:numeric="integer" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtV_post_want_tag"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        style="@style/ItemStyle"
+        android:orientation="vertical">
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txtV_post_want_tag"
-            android:id="@+id/txtVTag"
-            android:layout_weight="1" />
+            android:text="@string/txtV_post_want_date"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="datetime"
+            android:id="@+id/eTxtDate" />
+
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txtV_post_want_date"
-        android:id="@+id/txtVDate" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="datetime"
-        android:ems="10"
-        android:id="@+id/eTxtDate" />
+    <LinearLayout
+        style="@style/ItemStyle"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtV_post_type"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txtV_post_type"
-        android:id="@+id/txtVType" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerType" />
+    </LinearLayout>
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinnerType" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txtV_post_want_other"
-        android:id="@+id/txtVOther" />
+    <LinearLayout
+        style="@style/ItemStyle"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txtV_post_want_other"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/eTxtOther" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/eTxtOther" />
+
+    </LinearLayout>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/ItemStyle"
         android:text="@string/btn_custom_certification_submit"
         android:id="@+id/btnSubmit"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="submitClick" />
+
+
 
 </LinearLayout>

@@ -30,7 +30,8 @@
                 android:id="@+id/radio_one_room"
                 android:button="@null"
                 android:layout_weight="1"
-                android:onClick="radioButtonClick"/>
+                android:onClick="radioButtonClick"
+                android:gravity="center" />
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -39,7 +40,8 @@
                 android:id="@+id/radio_two_room"
                 android:button="@null"
                 android:layout_weight="1"
-                android:onClick="radioButtonClick"/>
+                android:onClick="radioButtonClick"
+                android:gravity="center" />
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -48,7 +50,8 @@
                 android:id="@+id/radio_three_room"
                 android:button="@null"
                 android:layout_weight="1"
-                android:onClick="radioButtonClick"/>
+                android:onClick="radioButtonClick"
+                android:gravity="center" />
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -57,7 +60,8 @@
                 android:id="@+id/radio_more_room"
                 android:button="@null"
                 android:layout_weight="1"
-                android:onClick="radioButtonClick"/>
+                android:onClick="radioButtonClick"
+                android:gravity="center" />
         </RadioGroup>
 
     </LinearLayout>

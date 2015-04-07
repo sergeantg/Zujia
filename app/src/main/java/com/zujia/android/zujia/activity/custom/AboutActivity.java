@@ -1,6 +1,6 @@
 package com.zujia.android.zujia.activity.custom;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import com.zujia.android.zujia.R;
 
 
-public class AboutActivity extends ActionBarActivity {
+public class AboutActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -6,33 +6,40 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Switch;
 
 import com.zujia.android.zujia.R;
-import com.zujia.android.zujia.service.RestApi;
 
-public class SearchActivity extends Activity {
+public class FilterActivity extends Activity {
 
+    private boolean certification;
+    private boolean elevator;
+    private boolean decoration;
     private int rooms;
-    private String key;
-    private RestApi restService;
+    private int min;
+    private int max;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
 
+        certification = false;
+        elevator = false;
+        decoration = false;
         rooms = 0;
-        restService = new RestApi();
+        min = 0;
+        max = 0;
 
+        setContentView(R.layout.activity_filter);
     }
+
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_search, menu);
+        getMenuInflater().inflate(R.menu.menu_filter, menu);
         return true;
     }
 
@@ -44,9 +51,9 @@ public class SearchActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+  //          return true;
+  //      }
 
         return super.onOptionsItemSelected(item);
     }
@@ -60,38 +67,56 @@ public class SearchActivity extends Activity {
             case R.id.radio_one_room:
                 if (checked)
                     rooms = 1;
-                    break;
+                break;
             case R.id.radio_two_room:
                 if (checked)
                     rooms = 2;
-                    break;
+                break;
 
             case R.id.radio_three_room:
                 if (checked)
                     rooms = 3;
-                    break;
+                break;
 
             case R.id.radio_more_room:
                 if (checked)
                     rooms = 4;
-                    break;
+                break;
         }
     }
 
-    //关键词搜索
-    public void searchClick(View view){
-        key = ((EditText)findViewById(R.id.editText_search_key)).getText().toString();
-
-        //传递搜索关键字，搜索选项
-        Bundle bundle = new Bundle();
-        bundle.putString("search_key", key);
-        bundle.putInt("rooms", rooms);
-
-        startActivity(new Intent().setClass(this, HousesListActivity.class).putExtras(bundle));
+    public void certificationClick(View view){
+        certification   = ((Switch)view).isChecked();
     }
 
-    //搜索附近房屋
-    public void aroundClick(View view){
-        startActivity(new Intent().setClass(this, HousesListActivity.class));
+    public void elevatorClick(View view){
+        elevator  = ((Switch)view).isChecked();
+    }
+
+    public void decorationClick(View view){
+        decoration  = ((Switch)view).isChecked();
+    }
+
+    public void submitClick(View view){
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("certification", certification);
+        bundle.putBoolean("elevator", elevator);
+        bundle.putBoolean("decoration", decoration);
+        bundle.putInt("rooms", rooms);
+        bundle.putInt("min", min);
+        bundle.putInt("max", max);
+
+        setResult(0, new Intent().putExtras(bundle));
+        finish();
+        //startActivity(new Intent().setClass(this, HousesListActivity.class).putExtras(bundle));
+    }
+
+    public void resetClick(View view){
+        certification = false;
+        elevator = false;
+        decoration = false;
+        rooms = 0;
+        min = 0;
+        max = 0;
     }
 }

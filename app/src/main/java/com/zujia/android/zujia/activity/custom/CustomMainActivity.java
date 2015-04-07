@@ -1,21 +1,20 @@
 package com.zujia.android.zujia.activity.custom;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TabHost;
 
+import com.zujia.android.zujia.R;
 import com.zujia.android.zujia.activity.LoginActivity;
 import com.zujia.android.zujia.activity.SettingActivity;
-import com.zujia.android.zujia.R;
-
-import android.util.Log;
 
 
-public class CustomMainActivity extends ActionBarActivity {
+public class CustomMainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

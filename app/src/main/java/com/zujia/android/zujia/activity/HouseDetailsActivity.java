@@ -1,13 +1,13 @@
 package com.zujia.android.zujia.activity;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.zujia.android.zujia.R;
 
-public class HouseDetailsActivity extends ActionBarActivity {
+public class HouseDetailsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
