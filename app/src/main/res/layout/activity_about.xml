@@ -23,7 +23,7 @@
         android:orientation="vertical"
         style="@style/MainLayoutStyle">
 
-        <RelativeLayout style="@style/NoneMarginItemStyle">
+        <RelativeLayout style="@style/ItemStyle">
 
             <TextView
                 style="@style/ItemTextStyle"
@@ -36,7 +36,7 @@
 
         <View style="@style/ItemSplitter" />
 
-        <RelativeLayout style="@style/NoneMarginItemStyle"
+        <RelativeLayout style="@style/ItemStyle"
             android:layout_marginTop="15dp">
 
             <TextView
@@ -50,7 +50,7 @@
 
         <View style="@style/ItemSplitter" />
 
-        <RelativeLayout style="@style/NoneMarginItemStyle">
+        <RelativeLayout style="@style/ItemStyle">
 
             <TextView
                 style="@style/ItemTextStyle"
@@ -63,7 +63,7 @@
 
         <View style="@style/ItemSplitter" />
 
-        <RelativeLayout style="@style/NoneMarginItemStyle">
+        <RelativeLayout style="@style/ItemStyle">
 
             <TextView
                 style="@style/ItemTextStyle"

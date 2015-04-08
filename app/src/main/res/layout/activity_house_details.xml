@@ -17,7 +17,7 @@
 
 
 
-    <RelativeLayout style="@style/NoneMarginItemStyle">
+    <RelativeLayout style="@style/ItemStyle">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -51,14 +51,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txtV_house_detail_type"
                 android:layout_gravity="right"
-                style="@style/ItemNameFont"/>
+                android:textSize="@dimen/large_text"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"
+                android:textSize="@dimen/medium_text"
                 android:id="@+id/txtVSize" />
         </TableRow>
 
@@ -72,14 +72,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txtV_house_detail_rent"
                 android:layout_gravity="right"
-                style="@style/ItemNameFont"/>
+                android:textSize="@dimen/large_text"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"
+                android:textSize="@dimen/medium_text"
                 android:id="@+id/txtVRent" />
         </TableRow>
 
@@ -93,14 +93,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txtV_house_detail_floor"
                 android:layout_gravity="right"
-                style="@style/ItemNameFont"/>
+                android:textSize="@dimen/large_text"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"
+                android:textSize="@dimen/medium_text"
                 android:id="@+id/txtVFloor" />
         </TableRow>
 
@@ -114,14 +114,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txtV_house_detail_date"
                 android:layout_gravity="right"
-                style="@style/ItemNameFont"/>
+                android:textSize="@dimen/large_text"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"
+                android:textSize="@dimen/medium_text"
                 android:id="@+id/txtVDate" />
         </TableRow>
 
@@ -135,14 +135,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txtV_house_detail_decoration"
                 android:layout_gravity="right"
-                style="@style/ItemNameFont"/>
+                android:textSize="@dimen/large_text"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"
+                android:textSize="@dimen/medium_text"
                 android:id="@+id/txtVDecoration" />
         </TableRow>
 
@@ -156,14 +156,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txtV_house_detail_furniture"
                 android:layout_gravity="right"
-                style="@style/ItemNameFont"/>
+                android:textSize="@dimen/large_text"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"
+                android:textSize="@dimen/medium_text"
                 android:id="@+id/txtVFurniture" />
         </TableRow>
 
@@ -177,14 +177,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txtV_house_detail_appliance"
                 android:layout_gravity="right"
-                style="@style/ItemNameFont"/>
+                android:textSize="@dimen/large_text"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"
+                android:textSize="@dimen/medium_text"
                 android:id="@+id/txtVAppliance" />
         </TableRow>
 
@@ -198,14 +198,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txtV_house_detail_other"
                 android:layout_gravity="right"
-                style="@style/ItemNameFont"/>
+                android:textSize="@dimen/large_text"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"
+                android:textSize="@dimen/medium_text"
                 android:id="@+id/txtVOther" />
         </TableRow>
 
@@ -219,14 +219,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txtV_house_detail_description"
                 android:layout_gravity="right"
-                style="@style/ItemNameFont"/>
+                android:textSize="@dimen/large_text"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:layout_weight="1"
-                style="@style/ItemContentFont"
+                android:textSize="@dimen/medium_text"
                 android:id="@+id/txtVDescribtion" />
         </TableRow>
     </TableLayout>

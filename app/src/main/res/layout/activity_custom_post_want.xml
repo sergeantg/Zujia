@@ -108,7 +108,8 @@
         android:text="@string/btn_custom_certification_submit"
         android:id="@+id/btnSubmit"
         android:layout_gravity="center_horizontal"
-        android:onClick="submitClick" />
+        android:onClick="submitClick"
+        android:background="@color/orange" />
 
 
 

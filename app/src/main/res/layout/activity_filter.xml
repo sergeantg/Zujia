@@ -125,24 +125,34 @@
             android:layout_height="wrap_content"
             android:id="@+id/seekBar" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center">
+    </LinearLayout>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_filter_reset"
-                android:onClick="restClick" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_filter_submit"
-                android:onClick="submitClick" />
-        </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_filter_reset"
+            android:onClick="restClick"
+            android:background="@color/orange"
+            android:layout_weight="2" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_filter_submit"
+            android:onClick="submitClick"
+            android:background="@color/orange"
+            android:layout_weight="2" />
     </LinearLayout>
 
 

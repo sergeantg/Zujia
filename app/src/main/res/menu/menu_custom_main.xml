@@ -4,6 +4,6 @@
     tools:context="com.zujia.android.zujia.activity.custom.CustomMainActivity">
     <item
         android:id="@+id/searchItem"
-        app:showAsAction="ifRoom|withText"
+        android:showAsAction="ifRoom|withText"
         android:title="@string/action_bar_title_search_item"/>
 </menu>

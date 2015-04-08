@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 
 import android.os.Build;
@@ -18,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.zujia.android.zujia.R;
+import com.zujia.android.zujia.activity.custom.CustomMainActivity;
 
 
 /**
@@ -218,6 +220,7 @@ public class LoginActivity extends Activity{
             showProgress(false);
 
             if (success) {
+                startActivity(new Intent().setClass(getBaseContext(), CustomMainActivity.class));
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

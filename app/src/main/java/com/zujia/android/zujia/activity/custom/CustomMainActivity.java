@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.TabHost;
 
 import com.zujia.android.zujia.R;
-import com.zujia.android.zujia.activity.LoginActivity;
 import com.zujia.android.zujia.activity.SettingActivity;
 
 
@@ -95,7 +94,7 @@ public class CustomMainActivity extends Activity {
         //noinspection SimplifiableIfStatement
         switch (item.getItemId()){
             case R.id.searchItem:
-                startActivity(new Intent().setClass(this, LoginActivity.class));
+                startActivity(new Intent().setClass(this, SearchActivity.class));
             break;
         }
 

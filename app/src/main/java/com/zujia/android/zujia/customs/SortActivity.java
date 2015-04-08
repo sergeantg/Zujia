@@ -1,7 +1,7 @@
 package com.zujia.android.zujia.customs;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.zujia.android.zujia.R;
 
-public class SortActivity extends ActionBarActivity {
+public class SortActivity extends Activity {
 
     //排序方式
     private int sort = 0;

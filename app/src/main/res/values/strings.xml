@@ -13,18 +13,18 @@
 
     <!--activity title string-->
     <string name="title_activity_custom_main">租家</string>
-    <string name="title_activity_houses_list">HousesListActivity</string>
-    <string name="title_activity_houses_map">HousesMapActivity</string>
-    <string name="title_activity_custom_certification">CustomCertificationActivity</string>
-    <string name="title_activity_custom_info">CustomInfoActivity</string>
-    <string name="title_activity_custom_post_want">CustomPostWantActivity</string>
-    <string name="title_activity_custom_check_want">CustomCheckWantActivity</string>
-    <string name="title_activity_custom_feedback">CustomFeedbackActivity</string>
-    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_houses_list">搜索结果</string>
+    <string name="title_activity_houses_map">地图显示</string>
+    <string name="title_activity_custom_certification">实名认证</string>
+    <string name="title_activity_custom_info">个人信息</string>
+    <string name="title_activity_custom_post_want">发布租房需求</string>
+    <string name="title_activity_custom_check_want">租房需求</string>
+    <string name="title_activity_custom_feedback">反馈</string>
+    <string name="title_activity_about">关于租家</string>
     <string name="title_activity_houses_pic_list">HousesPicListActivity</string>
-    <string name="title_activity_search">SearchActivity</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_custom_setting">CustomSettingActivity</string>
+    <string name="title_activity_search">搜索房屋</string>
+    <string name="title_activity_login">登陆</string>
+    <string name="title_activity_custom_setting">设置</string>
 
     <!-- custom certification page -->
     <string name="txtV_custom_certification_name">真实姓名</string>
@@ -70,6 +70,7 @@
     <string name="search_more_rooms">三室以上</string>
     <string name="btn_search_search">搜索</string>
     <string name="btn_search_around">查看附近房屋</string>
+    <string name="hint_search_search">请输入地点，小区，地铁路线，站点名</string>
 
     
     <!--setting page-->

@@ -45,7 +45,8 @@
                 android:imeOptions="actionUnspecified" android:inputType="textPassword"
                 android:drawableLeft="@drawable/password"/>
 
-            <Button android:id="@+id/phone_sign_in_button" style="@style/OrangeBtn"
+            <Button android:id="@+id/phone_sign_in_button"
+                android:background="@color/orange"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:layout_marginTop="16dp" android:text="@string/btn_login_login"
                 android:textStyle="bold" />
@@ -60,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/txtV_login_forget_password"
                     android:layout_alignParentLeft="true"
-                    style="@style/ItemNameFont"/>
+                    android:textSize="@dimen/large_text"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -126,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txtV_login_search_house"
-            style="@style/SubtitleFont"
+            android:textSize="@dimen/large_text"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:clickable="true"
@@ -136,7 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txtV_login_pub_house"
-            style="@style/SubtitleFont"
+            android:textSize="@dimen/large_text"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:clickable="true"
@@ -146,7 +147,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txtV_login_zujiabang"
-            style="@style/SubtitleFont"
+            android:textSize="@dimen/large_text"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:onClick="zujiabangClick" />
