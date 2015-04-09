@@ -43,68 +43,67 @@
                     android:layout_height="fill_parent"
                     android:orientation="vertical">
 
-                    <LinearLayout style="@style/MainLayoutStyle" >
+                    <FrameLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/main_container"/>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="add fragment"
+                        android:onClick="addClick"/>
+                    <RelativeLayout style="@style/ItemStyle"
+                        android:onClick="moveClick">
 
-                        <RelativeLayout style="@style/ItemStyle"
-                            android:onClick="moveClick">
+                        <ImageView
+                            style="@style/ItemLeftIconStyle"
+                            android:src="@drawable/move_logo"
+                            android:id="@+id/logo1"/>
+                        <TextView
+                            style="@style/ItemTextStyle"
+                            android:text="@string/btn_move"
+                            android:layout_toEndOf="@id/logo1" />
 
-                            <ImageView
-                                style="@style/ItemLeftIconStyle"
-                                android:src="@drawable/move_logo"
-                                android:id="@+id/logo1"/>
-                            <TextView
-                                style="@style/ItemTextStyle"
-                                android:text="@string/btn_move"
-                                android:layout_toEndOf="@id/logo1" />
+                        <ImageView
+                            style="@style/ItemRightIconStyle"
+                            android:src="@drawable/mail_arrow" />
+                    </RelativeLayout>
 
-                            <ImageView
-                                style="@style/ItemRightIconStyle"
-                                android:src="@drawable/mail_arrow" />
-                        </RelativeLayout>
 
-                    </LinearLayout>
+                    <RelativeLayout style="@style/ItemStyle"
+                        android:onClick="housekeeperClick">
 
-                    <LinearLayout style="@style/MainLayoutStyle" >
+                        <ImageView
+                            style="@style/ItemLeftIconStyle"
+                            android:src="@drawable/housekeeper_logo"
+                            android:id="@+id/logo2"/>
+                        <TextView
+                            style="@style/ItemTextStyle"
+                            android:text="@string/btn_housekeeper"
+                            android:layout_toEndOf="@id/logo2" />
 
-                        <RelativeLayout style="@style/ItemStyle"
-                            android:onClick="housekeeperClick">
+                        <ImageView
+                            style="@style/ItemRightIconStyle"
+                            android:src="@drawable/mail_arrow" />
+                    </RelativeLayout>
 
-                            <ImageView
-                                style="@style/ItemLeftIconStyle"
-                                android:src="@drawable/housekeeper_logo"
-                                android:id="@+id/logo2"/>
-                            <TextView
-                                style="@style/ItemTextStyle"
-                                android:text="@string/btn_housekeeper"
-                                android:layout_toEndOf="@id/logo2" />
 
-                            <ImageView
-                                style="@style/ItemRightIconStyle"
-                                android:src="@drawable/mail_arrow" />
-                        </RelativeLayout>
+                    <RelativeLayout style="@style/ItemStyle">
 
-                    </LinearLayout>
+                        <ImageView
+                            style="@style/ItemLeftIconStyle"
+                            android:src="@drawable/other_service_logo"
+                            android:id="@+id/logo3"/>
+                        <TextView
+                            style="@style/ItemTextStyle"
+                            android:text="@string/btn_other"
+                            android:layout_toEndOf="@id/logo3" />
 
-                    <LinearLayout style="@style/MainLayoutStyle" >
-
-                        <RelativeLayout style="@style/ItemStyle">
-
-                            <ImageView
-                                style="@style/ItemLeftIconStyle"
-                                android:src="@drawable/other_service_logo"
-                                android:id="@+id/logo3"/>
-                            <TextView
-                                style="@style/ItemTextStyle"
-                                android:text="@string/btn_other"
-                                android:layout_toEndOf="@id/logo3" />
-
-                            <ImageView
-                                style="@style/ItemRightIconStyle"
-                                android:src="@drawable/mail_arrow"
-                                android:onClick="otherClick" />
-                        </RelativeLayout>
-
-                    </LinearLayout>
+                        <ImageView
+                            style="@style/ItemRightIconStyle"
+                            android:src="@drawable/mail_arrow"
+                            android:onClick="otherClick" />
+                    </RelativeLayout>
 
                 </LinearLayout>
 

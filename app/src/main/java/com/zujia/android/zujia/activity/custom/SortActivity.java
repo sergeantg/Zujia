@@ -1,4 +1,4 @@
-package com.zujia.android.zujia.customs;
+package com.zujia.android.zujia.activity.custom;
 
 import android.app.Activity;
 import android.content.Intent;

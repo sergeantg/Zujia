@@ -1,15 +1,18 @@
 package com.zujia.android.zujia.activity.custom;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TabHost;
 
 import com.zujia.android.zujia.R;
+import com.zujia.android.zujia.activity.ServiceSecondMenuItemFragment;
 import com.zujia.android.zujia.activity.SettingActivity;
 
 
@@ -131,6 +134,19 @@ public class CustomMainActivity extends Activity {
     }
     public void otherClick(View v){
 
+    }
+
+    //
+    public void addClick(View view){
+        ServiceSecondMenuItemFragment f = new ServiceSecondMenuItemFragment();
+        FrameLayout fl = (FrameLayout)findViewById(R.id.main_container);
+        FragmentTransaction transaction = getFragmentManager()
+                .beginTransaction();
+        transaction.add(R.id.main_container, f);
+        // 把当前Fragment添加至回退栈，通过返回键返回时可以导航到上一个Fragment状态
+        transaction.addToBackStack(null);
+        // 提交
+        transaction.commit();
     }
 
 }

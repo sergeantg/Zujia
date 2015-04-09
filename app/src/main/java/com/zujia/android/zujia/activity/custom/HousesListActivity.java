@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zujia.android.zujia.R;
-import com.zujia.android.zujia.customs.SortActivity;
 import com.zujia.android.zujia.model.HouseInfo;
 import com.zujia.android.zujia.model.SearchCondition;
 import com.zujia.android.zujia.service.RestApi;
@@ -230,5 +229,7 @@ public class HousesListActivity extends ListActivity {
     }
     private void search(){
 
+       RestApi api = new RestApi();
+        api.douban();
     }
 }
