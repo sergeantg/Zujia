@@ -2,6 +2,7 @@ package com.zujia.android.zujia.service;
 
 import com.zujia.android.zujia.model.DoubanTest;
 import com.zujia.android.zujia.model.HouseInfo;
+import com.zujia.android.zujia.model.PersonalInfo;
 import com.zujia.android.zujia.model.SearchCondition;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public class RestApi {
 
     private interface _search{
         @GET("/search")
-        List<HouseInfo> search(@Query("longitude") float longi, @Query("latitude") float lati,
+        List<HouseInfo> search(@Query("longitude") double longi, @Query("latitude") double lati,
                                @Query("size") int size, @Query("iscertification") int cer,
                                @Query("elevator") int e, @Query("decorated") int de,
                                @Query("min") int min, @Query("max") int max,
@@ -53,6 +54,11 @@ public class RestApi {
                 c.certification, c.elevator, c.decoration,
                 c.min, c.max, c.sort, c.no, c.i);
     }
+
+    public PersonalInfo getPersonalInfo(int loginUid){
+        return new PersonalInfo();
+    }
+
     public DoubanTest douban(){
         _douban service = adapter.create(_douban.class);
         return  service.douban();

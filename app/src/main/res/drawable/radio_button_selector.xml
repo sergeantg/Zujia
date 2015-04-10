@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:drawable="@color/brown_bg"
-        android:state_checked="true"
-        />
+        android:drawable="@color/brown"
+        android:state_checked="true">
+        <shape>
+            <stroke android:width="3dp" android:color="@color/brown" />
+        </shape>
+    </item>
+
     <item
-        android:drawable="@color/white_bg"
-        android:state_checked="false"
-        />
+        android:drawable="@color/white"
+        android:state_checked="false">
+        <shape>
+            <stroke android:width="3dp" android:color="@color/brown" />
+        </shape>
+    </item>
+
  </selector>
 
 

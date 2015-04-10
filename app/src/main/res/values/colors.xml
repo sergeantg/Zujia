@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="orange">#f4632e</color>
-    <color name="white_bg">#ffffff</color>
-    <color name="brown_bg">#333333</color>
-    <color name="grey_font">#666666</color>
+    <color name="white">#ffffff</color>
+    <color name="brown">#333333</color>
+    <color name="gray">#cdc0c0</color>
+    <color name="pink">#fbd3c9</color>
+    <color name="font_orange">#f4631b</color>
+    <color name="color1">#f9b294</color>
+    <color name="color2">#f67280</color>
+    <color name="color3">#c16b84</color>
+    <color name="color4">#6e5d7f</color>
+    <color name="color5">#355c7d</color>
 </resources>

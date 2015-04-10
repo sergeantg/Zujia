@@ -142,8 +142,49 @@
     <string name="btn_about">关于租家</string>
     <string name="btn_logout">退出登陆</string>
 
-    <string name="btn_move">搬家服务</string>
-    <string name="btn_housekeeper">家政服务</string>
-    <string name="btn_other">其他家居维修服务</string>
+    <string name="rent_main">租家帮</string>
+    <string name="rent_list_main">房屋管家、搬家、律师等</string>
+    <string name="live_main">居家帮</string>
+    <string name="live_list_main">房屋管家、搬家、律师等</string>
+    <string name="appliance_main">家电帮</string>
+    <string name="appliance_list_main">房屋管家、搬家、律师等</string>
+    <string name="furniture_main">家具帮</string>
+    <string name="furniture_list_main">房屋管家、搬家、律师等</string>
+    <string name="life_main">生活帮</string>
+    <string name="life_list_main">房屋管家、搬家、律师等</string>
+
+    <string name="message_main">消息</string>
+    <string name="contact_main">联系记录</string>
+    <string name="zujiabang_main">租家帮</string>
+    <string name="me_main">我</string>
+    <string-array name="rent_service">
+        <item>房屋管家</item>
+        <item>搬家</item>
+        <item>换锁</item>
+        <item>手续</item>
+        <item>律师</item>
+        <item>房屋管家</item>
+        <item>搬家</item>
+        <item>换锁</item>
+        <item>手续</item>
+        <item>律师</item>
+        <item>房屋管家</item>
+        <item>搬家</item>
+        <item>换锁</item>
+        <item>手续</item>
+        <item>律师</item>
+        <item>房屋管家</item>
+        <item>搬家</item>
+        <item>换锁</item>
+        <item>手续</item>
+        <item>律师</item>
+        <item>房屋管家</item>
+        <item>搬家</item>
+        <item>换锁</item>
+        <item>手续</item>
+        <item>律师</item>
+    </string-array>
+    <string name="title_activity_service_list">ServiceListActivity</string>
+
 
 </resources>

@@ -25,8 +25,17 @@
                     android:id="@+id/tab1"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="New Button"
+                        android:id="@+id/buttondd" />
+                    <fragment
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:name="io.rong.imkit.fragment.ConversationFragment"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -35,76 +44,185 @@
                     android:layout_height="fill_parent"
                     android:orientation="vertical">
 
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/tab3"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="add"
+                            android:onClick="addClick"/>
+                        <RelativeLayout
+                            android:layout_width="fill_parent" android:layout_height="wrap_content"
+                            android:onClick="menuClick"
+                            android:id="@+id/layout_rent">
+
+                            <ImageView
+                                style="@style/ItemLeftIconStyle"
+                                android:src="@drawable/rectangle_colorful_1"
+                                android:id="@+id/logo1"/>
+                            <TextView
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="@string/rent_main" android:textSize="@dimen/large_text"
+                                android:layout_toEndOf="@id/logo1" android:layout_marginTop="6dp"
+                                android:id="@+id/txtVRentBang"/>
+
+                            <TextView
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="@string/rent_list_main" android:textSize="@dimen/small_text"
+                                android:layout_toEndOf="@id/logo1" android:layout_below="@+id/txtVRentBang"
+                                android:textColor="@color/font_orange"
+                                android:id="@+id/rent_hint" />
+
+                            <ImageView
+                                style="@style/ItemRightIconStyle"
+                                android:src="@drawable/arrow_right"
+                                android:id="@+id/rent_arrow" />
+
+                        </RelativeLayout>
+
+                        <View style="@style/ItemSplitter" />
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent" android:layout_height="wrap_content"
+                            android:onClick="menuClick"
+                            android:id="@+id/layout_live">
+
+                            <ImageView
+                                style="@style/ItemLeftIconStyle"
+                                android:src="@drawable/rectangle_colorful_2"
+                                android:id="@+id/logo2"/>
+                            <TextView
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="@string/live_main" android:textSize="@dimen/large_text"
+                                android:layout_toEndOf="@id/logo2" android:layout_marginTop="6dp"
+                                android:id="@+id/txtVLiveBang"/>
+
+                            <TextView
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="@string/live_list_main" android:textSize="@dimen/small_text"
+                                android:layout_toEndOf="@id/logo2" android:layout_below="@+id/txtVLiveBang"
+                                android:textColor="@color/font_orange"
+                                android:id="@+id/live_hint" />
+
+                            <ImageView
+                                style="@style/ItemRightIconStyle"
+                                android:src="@drawable/arrow_right"
+                                android:id="@+id/live_arrow" />
+
+                        </RelativeLayout>
+
+                        <View style="@style/ItemSplitter" />
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent" android:layout_height="wrap_content"
+                            android:onClick="menuClick"
+                            android:id="@+id/layout_appliance">
+
+                            <ImageView
+                                style="@style/ItemLeftIconStyle"
+                                android:src="@drawable/rectangle_colorful_3"
+                                android:id="@+id/logo3"/>
+                            <TextView
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="@string/appliance_main" android:textSize="@dimen/large_text"
+                                android:layout_toEndOf="@id/logo3" android:layout_marginTop="6dp"
+                                android:id="@+id/txtVApplianceBang"/>
+
+                            <TextView
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="@string/appliance_list_main" android:textSize="@dimen/small_text"
+                                android:layout_toEndOf="@id/logo3" android:layout_below="@+id/txtVApplianceBang"
+                                android:textColor="@color/font_orange"
+                                android:id="@+id/appliance_hint" />
+
+                            <ImageView
+                                style="@style/ItemRightIconStyle"
+                                android:src="@drawable/arrow_right"
+                                android:id="@+id/appliance_arrow" />
+
+                        </RelativeLayout>
+
+                        <View style="@style/ItemSplitter" />
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent" android:layout_height="wrap_content"
+                            android:onClick="menuClick"
+                            android:nestedScrollingEnabled="false"
+                            android:id="@+id/layout_furniture">
+
+                            <ImageView
+                                style="@style/ItemLeftIconStyle"
+                                android:src="@drawable/rectangle_colorful_4"
+                                android:id="@+id/logo4"/>
+                            <TextView
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="@string/furniture_main" android:textSize="@dimen/large_text"
+                                android:layout_toEndOf="@id/logo4" android:layout_marginTop="6dp"
+                                android:id="@+id/txtVFurnitureBang"/>
+
+                            <TextView
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="@string/furniture_list_main" android:textSize="@dimen/small_text"
+                                android:layout_toEndOf="@id/logo4" android:layout_below="@+id/txtVFurnitureBang"
+                                android:textColor="@color/font_orange"
+                                android:id="@+id/furniture_hint" />
+
+                            <ImageView
+                                style="@style/ItemRightIconStyle"
+                                android:src="@drawable/arrow_right"
+                                android:id="@+id/furniture_arrow" />
+
+                        </RelativeLayout>
+
+                        <View style="@style/ItemSplitter" />
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent" android:layout_height="wrap_content"
+                            android:onClick="menuClick"
+                            android:id="@+id/layout_life">
+
+                            <ImageView
+                                style="@style/ItemLeftIconStyle"
+                                android:src="@drawable/rectangle_colorful_5"
+                                android:id="@+id/logo5"/>
+                            <TextView
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="@string/life_main" android:textSize="@dimen/large_text"
+                                android:layout_toEndOf="@id/logo5" android:layout_marginTop="6dp"
+                                android:id="@+id/txtVLifeBang"/>
+
+                            <TextView
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="@string/life_list_main" android:textSize="@dimen/small_text"
+                                android:layout_toEndOf="@id/logo5" android:layout_below="@+id/txtVLifeBang"
+                                android:textColor="@color/font_orange"
+                                android:id="@+id/life_hint" />
+
+                            <ImageView
+                                style="@style/ItemRightIconStyle"
+                                android:src="@drawable/arrow_right"
+                                android:id="@+id/life_arrow" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
 
                     <FrameLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/main_container"/>
-                    <Button
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="add fragment"
-                        android:onClick="addClick"/>
-                    <RelativeLayout style="@style/ItemStyle"
-                        android:onClick="moveClick">
-
-                        <ImageView
-                            style="@style/ItemLeftIconStyle"
-                            android:src="@drawable/move_logo"
-                            android:id="@+id/logo1"/>
-                        <TextView
-                            style="@style/ItemTextStyle"
-                            android:text="@string/btn_move"
-                            android:layout_toEndOf="@id/logo1" />
-
-                        <ImageView
-                            style="@style/ItemRightIconStyle"
-                            android:src="@drawable/mail_arrow" />
-                    </RelativeLayout>
-
-
-                    <RelativeLayout style="@style/ItemStyle"
-                        android:onClick="housekeeperClick">
-
-                        <ImageView
-                            style="@style/ItemLeftIconStyle"
-                            android:src="@drawable/housekeeper_logo"
-                            android:id="@+id/logo2"/>
-                        <TextView
-                            style="@style/ItemTextStyle"
-                            android:text="@string/btn_housekeeper"
-                            android:layout_toEndOf="@id/logo2" />
-
-                        <ImageView
-                            style="@style/ItemRightIconStyle"
-                            android:src="@drawable/mail_arrow" />
-                    </RelativeLayout>
-
-
-                    <RelativeLayout style="@style/ItemStyle">
-
-                        <ImageView
-                            style="@style/ItemLeftIconStyle"
-                            android:src="@drawable/other_service_logo"
-                            android:id="@+id/logo3"/>
-                        <TextView
-                            style="@style/ItemTextStyle"
-                            android:text="@string/btn_other"
-                            android:layout_toEndOf="@id/logo3" />
-
-                        <ImageView
-                            style="@style/ItemRightIconStyle"
-                            android:src="@drawable/mail_arrow"
-                            android:onClick="otherClick" />
-                    </RelativeLayout>
-
+                        android:layout_height="fill_parent"
+                        android:id="@+id/menu_container"
+                        android:layout_weight="2" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -113,62 +231,54 @@
                     android:layout_height="fill_parent"
                     android:orientation="vertical">
 
-                    <RelativeLayout style="@style/MainLayoutStyle"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/brown_bg">
+                        android:background="@color/brown">
 
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/imageButton4"
                             android:layout_toLeftOf="@+id/imgVAvater"
-                            android:src="@drawable/shoot_me" />
+                            android:src="@drawable/camera"
+                            android:layout_centerVertical="true"
+                            android:background="#00000000"
+                            android:layout_margin="10dp" />
 
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             xmlns:app="http://schemas.android.com/apk/res-auto"
                             android:id="@+id/imgVAvater"
-                            android:layout_width="96dp"
-                            android:layout_height="96dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:src="@drawable/avater_round_me"
                             app:border_width="2dp"
                             app:border_color="#FF000000"
-                            android:layout_centerInParent="true" />
+                            android:layout_centerHorizontal="true"
+                            android:layout_margin="10dp" />
                         <TextView
                             android:id="@+id/txtVName"
                             android:text="李先生"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/imgVAvater"
-                            android:layout_centerHorizontal="true" />
+                            android:layout_centerHorizontal="true"
+                            android:textSize="@dimen/medium_text"
+                            android:textColor="@color/white"
+                            android:layout_margin="10dp" />
 
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/imageButton5"
                             android:layout_toRightOf="@+id/imgVAvater"
-                            android:src="@drawable/edit_me" />
+                            android:src="@drawable/write"
+                            android:layout_centerVertical="true"
+                            android:background="#00000000"
+                            android:layout_margin="10dp" />
 
                     </RelativeLayout>
-
-                    <View style="@style/ItemSplitter" />
-
-                    <LinearLayout style="@style/MainLayoutStyle" >
-
-                        <RelativeLayout style="@style/ItemStyle"
-                            android:onClick="zujiabangClick">
-
-                            <TextView
-                                style="@style/ItemTextStyle"
-                                android:text="@string/btn_growth" />
-
-                            <ImageView
-                                style="@style/ItemRightIconStyle"
-                                android:src="@drawable/mail_arrow" />
-                        </RelativeLayout>
-
-                    </LinearLayout>
 
                     <LinearLayout style="@style/MainLayoutStyle" >
 
@@ -177,11 +287,26 @@
 
                             <TextView
                                 style="@style/ItemTextStyle"
-                                android:text="@string/btn_postWant" />
+                                android:text="@string/btn_postWant"
+                                android:textSize="@dimen/medium_text" />
 
                             <ImageView
                                 style="@style/ItemRightIconStyle"
-                                android:src="@drawable/mail_arrow" />
+                                android:src="@drawable/arrow_right" />
+                        </RelativeLayout>
+
+                        <RelativeLayout style="@style/ItemStyle"
+                            android:onClick="zujiabangClick">
+
+                            <TextView
+                                style="@style/ItemTextStyle"
+                                android:text="@string/btn_growth"
+                                android:textSize="@dimen/medium_text" />
+
+                            <ImageView
+                                style="@style/ItemRightIconStyle"
+                                android:src="@drawable/arrow_right" />
+
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -193,25 +318,25 @@
 
                             <TextView
                                 style="@style/ItemTextStyle"
-                                android:text="@string/btn_setting" />
+                                android:text="@string/btn_setting"
+                                android:textSize="@dimen/medium_text" />
 
                             <ImageView
                                 style="@style/ItemRightIconStyle"
-                                android:src="@drawable/mail_arrow" />
+                                android:src="@drawable/arrow_right" />
                         </RelativeLayout>
-
-                        <View style="@style/ItemSplitter" />
 
                         <RelativeLayout style="@style/ItemStyle"
                             android:onClick="feedbackClick">
 
                             <TextView
                                 style="@style/ItemTextStyle"
-                                android:text="@string/btn_feedback" />
+                                android:text="@string/btn_feedback"
+                                android:textSize="@dimen/medium_text" />
 
                             <ImageView
                                 style="@style/ItemRightIconStyle"
-                                android:src="@drawable/mail_arrow" />
+                                android:src="@drawable/arrow_right" />
                         </RelativeLayout>
 
                         <View style="@style/ItemSplitter" />
@@ -221,11 +346,12 @@
 
                             <TextView
                                 style="@style/ItemTextStyle"
-                                android:text="@string/btn_about" />
+                                android:text="@string/btn_about"
+                                android:textSize="@dimen/medium_text" />
 
                             <ImageView
                                 style="@style/ItemRightIconStyle"
-                                android:src="@drawable/mail_arrow" />
+                                android:src="@drawable/arrow_right" />
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -237,14 +363,16 @@
 
                             <TextView
                                 style="@style/ItemTextStyle"
-                                android:text="@string/btn_logout" />
+                                android:text="@string/btn_logout"
+                                android:textSize="@dimen/medium_text" />
 
                             <ImageView
                                 style="@style/ItemRightIconStyle"
-                                android:src="@drawable/mail_arrow" />
+                                android:src="@drawable/arrow_right" />
                         </RelativeLayout>
 
                     </LinearLayout>
+
                 </LinearLayout>
 
             </FrameLayout>
@@ -253,7 +381,7 @@
                 android:id="@android:id/tabs"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/brown_bg"></TabWidget>
+                android:background="@color/brown"></TabWidget>
 
         </LinearLayout>
     </TabHost>

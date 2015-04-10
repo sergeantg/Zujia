@@ -6,14 +6,12 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -57,10 +55,10 @@ public class LoginActivity extends Activity{
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login_pass || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
+               // if (id == R.id.login_pass || id == EditorInfo.IME_NULL) {
+               //     attemptLogin();
+               //     return true;
+               // }
                 return false;
             }
         });

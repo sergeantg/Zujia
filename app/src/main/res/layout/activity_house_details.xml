@@ -12,8 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView16" />
+        android:id="@+id/txtVTitle" />
 
 
 
@@ -29,17 +28,39 @@
         <TextView
             style="@style/ItemTextStyle"
             android:text="南开区八里台"
-            android:layout_toRightOf="@+id/imageView5" />
+            android:layout_toRightOf="@+id/imageView5"
+            android:id="@+id/txtVAddress" />
 
         <ImageView
             style="@style/ItemRightIconStyle"
-            android:src="@drawable/mail_arrow" />
+            android:src="@drawable/arrow_right" />
     </RelativeLayout>
 
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_margin="10dp">
+
+        <TableRow
+            style="@style/ItemStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="房屋状态"
+                android:layout_gravity="right"
+                android:textSize="@dimen/large_text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:layout_weight="1"
+                android:textSize="@dimen/medium_text"
+                android:id="@+id/txtVState" />
+        </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"

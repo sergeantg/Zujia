@@ -5,8 +5,8 @@ package com.zujia.android.zujia.model;
  */
 public class SearchCondition{
     public String key = "";
-    public float longitude = 0;
-    public float latitude = 0;
+    public double longitude = 0;
+    public double latitude = 0;
 
     public int certification = 0;
     public int elevator = 0;
@@ -15,6 +15,6 @@ public class SearchCondition{
     public int min = 0;
     public int max = 0;
     public int sort = 0;
-    public int no = 0;
+    public int no = 20;
     public int i = 0;
 }

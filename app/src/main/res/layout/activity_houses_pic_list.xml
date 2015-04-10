@@ -4,9 +4,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.zujia.android.zujia.activity.custom.HousesPicListActivity">
+    tools:context="com.zujia.android.zujia.activity.HousesPicListActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/weibo"
+        android:background="@drawable/ring_button_selector"
+        android:layout_margin="100dp"
+        android:padding="20dp" />
 
 </RelativeLayout>

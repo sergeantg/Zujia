@@ -64,7 +64,7 @@
 
             <ImageView
                 style="@style/ItemRightIconStyle"
-                android:src="@drawable/mail_arrow" />
+                android:src="@drawable/arrow_right" />
         </RelativeLayout>
 
         <View style="@style/ItemSplitter" />
@@ -77,7 +77,7 @@
 
             <ImageView
                 style="@style/ItemRightIconStyle"
-                android:src="@drawable/mail_arrow" />
+                android:src="@drawable/arrow_right" />
         </RelativeLayout>
 
         <View style="@style/ItemSplitter" />
@@ -90,7 +90,7 @@
 
             <ImageView
                 style="@style/ItemRightIconStyle"
-                android:src="@drawable/mail_arrow" />
+                android:src="@drawable/arrow_right" />
         </RelativeLayout>
 
     </LinearLayout>

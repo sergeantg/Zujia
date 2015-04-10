@@ -36,20 +36,20 @@
                 android:maxLines="1"
                 android:singleLine="true"
                 android:drawableLeft="@drawable/account"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:textSize="@dimen/medium_text" />
 
             <EditText android:id="@+id/password" android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:hint="@string/editText_login_password"
                 android:maxLines="1" android:singleLine="true"
-                android:imeActionId="@+id/login_pass"
                 android:imeOptions="actionUnspecified" android:inputType="textPassword"
-                android:drawableLeft="@drawable/password"/>
+                android:drawableLeft="@drawable/password"
+                android:textSize="@dimen/medium_text" />
 
             <Button android:id="@+id/phone_sign_in_button"
-                android:background="@color/orange"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" android:text="@string/btn_login_login"
-                android:textStyle="bold" />
+                android:text="@string/btn_login_login"
+                style="@style/Button" />
 
             <RelativeLayout
                 android:layout_width="fill_parent"
@@ -61,13 +61,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/txtV_login_forget_password"
                     android:layout_alignParentLeft="true"
-                    android:textSize="@dimen/large_text"/>
+                    android:textSize="@dimen/medium_text"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txtV_login_sign_up"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:textSize="@dimen/medium_text" />
             </RelativeLayout>
 
         </LinearLayout>
@@ -87,28 +88,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txtV_login_other_account"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/medium_text" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/weixin"
-            android:background="#ffffff"
-            android:layout_margin="@dimen/margin_icon_btn" />
+            style="@style/RingButton" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/weibo"
-            android:background="#ffffff"
-            android:layout_margin="@dimen/margin_icon_btn" />
+            style="@style/RingButton" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/qq"
-            android:background="#ffffff"
-            android:layout_margin="@dimen/margin_icon_btn" />
+            style="@style/RingButton" />
     </LinearLayout>
 
     <Space
