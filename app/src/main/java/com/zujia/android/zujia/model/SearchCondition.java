@@ -17,4 +17,32 @@ public class SearchCondition{
     public int sort = 0;
     public int no = 20;
     public int i = 0;
+
+    public SearchCondition(){
+        longitude = 0;
+        latitude = 0;
+        certification = 0;
+        elevator = 0;
+        decoration = 0;
+        rooms = 0;
+        min = 0;
+        max = 0;
+        sort = 0;
+        no = 20;
+        i = 0;
+    }
+
+    public void reset(){
+        longitude = 0;
+        latitude = 0;
+        certification = 0;
+        elevator = 0;
+        decoration = 0;
+        rooms = 0;
+        min = 0;
+        max = 0;
+        sort = 0;
+        no = 20;
+        i = 0;
+    }
 }

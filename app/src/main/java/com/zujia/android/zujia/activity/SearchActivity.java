@@ -2,10 +2,8 @@ package com.zujia.android.zujia.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +11,13 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.mapapi.search.geocode.GeoCodeOption;
+import com.baidu.mapapi.search.geocode.GeoCodeResult;
+import com.baidu.mapapi.search.geocode.GeoCoder;
+import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.zujia.android.zujia.AppContext;
 import com.zujia.android.zujia.R;
 import com.zujia.android.zujia.service.RestApi;
@@ -22,6 +27,8 @@ public class SearchActivity extends Activity {
     private int rooms;
     private String key;
     private AppContext ac;
+    private MyLocationListener mLoListener;
+    private GeoCoder mSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +36,28 @@ public class SearchActivity extends Activity {
         setContentView(R.layout.activity_search);
 
         ac = (AppContext)getApplication();
+        mLoListener = new MyLocationListener();
+        mSearch = GeoCoder.newInstance();
         rooms = 0;
 
-    }
+        //设置地理位置编码回调
+        mSearch.setOnGetGeoCodeResultListener(new OnGetGeoCoderResultListener() {
+            @Override
+            public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
+                ac.condition.reset();
+                ac.condition.latitude = geoCodeResult.getLocation().latitude;
+                ac.condition.longitude = geoCodeResult.getLocation().longitude;
+                //new GetDataTask(false, true).execute();
+                Toast.makeText(getApplicationContext(), geoCodeResult.getAddress() + geoCodeResult.getLocation().latitude,
+                        Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
+
+            }
+        });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -87,12 +112,12 @@ public class SearchActivity extends Activity {
      */
     public void searchClick(View view){
         key = ((EditText)findViewById(R.id.editText_search_key)).getText().toString();
-        ac.condition.key = key;
+
+        key = "南开大学";
+        ac.condition.reset();
         ac.condition.rooms = rooms;
-
-        new GetDataTask(false, true).execute();//异步获取houselist
-
-        startActivity(new Intent().setClass(this, HousesListActivity.class));
+        mSearch.geocode(new GeoCodeOption()
+                .city("天津").address(key));
     }
 
     /**搜索附近房屋
@@ -101,27 +126,25 @@ public class SearchActivity extends Activity {
      */
     public void aroundClick(View view){
 
-        AppContext ac = (AppContext)getApplication();
-        Location l;
+        ac.mLocationClient.registerLocationListener(mLoListener);
 
-        if(ac.getGPSSettings()){
-            l = ac.getLocation();
-            if(l != null){
-                ac.condition.latitude = l.getLatitude();
-                ac.condition.longitude = l.getLongitude();
-
-                new GetDataTask(false, true).execute();//异步获取houselist
-
-                startActivity(new Intent().setClass(this, HousesListActivity.class));
-            }
-            Toast.makeText(this, "无法定位", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(this, "请开启GPS！", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Settings.ACTION_SECURITY_SETTINGS);
-            startActivityForResult(intent,0); //此为设置完成后返回到获取界面
-        }
+        ac.mLocationClient.requestLocation();
     }
 
+    /**
+     * 实现定位回调监听
+     */
+    public class MyLocationListener implements BDLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            ac.mLocationClient.unRegisterLocationListener(mLoListener);
+            ac.condition.reset();
+            ac.condition.latitude = location.getLatitude();
+            ac.condition.longitude = location.getLongitude();
+            new GetDataTask(false, true).execute();
+        }
+    }
     /**
      * 异步搜索任务
      *
@@ -136,9 +159,11 @@ public class SearchActivity extends Activity {
         @Override
         protected Integer doInBackground(Void... params){
             ((AppContext)getApplication()).getHouseList(add, isRefresh);
+            startActivity(new Intent().setClass(SearchActivity.this, HousesListActivity.class));
             return 1;
         }
     }
+
     private void Douban(){
         RestApi api = new RestApi();
         com.zujia.android.zujia.model.DoubanTest t = new com.zujia.android.zujia.model.DoubanTest();

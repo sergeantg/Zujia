@@ -13,11 +13,6 @@ import com.zujia.android.zujia.AppContext;
 import com.zujia.android.zujia.R;
 import com.zujia.android.zujia.adapter.HouseListAdapter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import cn.trinea.android.common.view.DropDownListView;
 
 
@@ -50,9 +45,6 @@ public class HousesListActivity extends Activity {
             @Override
             public void onClick(View v) {
                 new GetDataTask(true, false).execute();
-                adapter.list.clear();
-                adapter.list.addAll(ac.getHouseList(false, false));
-                adapter.notifyDataSetChanged();
             }
         });
     }
@@ -67,9 +59,6 @@ public class HousesListActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
 
         //noinspection SimplifiableIfStatement
         switch (item.getItemId()) {
@@ -104,50 +93,25 @@ public class HousesListActivity extends Activity {
                     ac.condition.min = b.getInt("min");
                     ac.condition.max = b.getInt("max");
 
-                    new GetDataTask(false, true).execute();//重新异步搜索
-                    adapter.list.clear();
-                    adapter.list.addAll(ac.getHouseList(false, false));
-                    adapter.notifyDataSetChanged();
+                    new GetDataTask(false, true).execute();
+
                     break;
                 case 1://商圈
                     break;
                 case 2://排序
                     ac.condition.sort = b.getInt("sort");
 
-                    new GetDataTask(false, true).execute();//重新异步搜索
+                    new GetDataTask(false, true).execute();
 
-                    adapter.list.clear();
-                    adapter.list.addAll(ac.getHouseList(false, false));
-                    adapter.notifyDataSetChanged();
                     break;
             }
         }
     }
 
-    private List<Map<String, Object>> getData() {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        Map<String, Object> map = new HashMap<String, Object>();
-
-        map.put("textView17", "how");
-        map.put("imageView6", R.drawable.avater);
-        list.add(map);
-
-        map = new HashMap<String, Object>();
-        map.put("textView17", "are");
-        map.put("imageView6", R.drawable.avater);
-        list.add(map);
-
-        map = new HashMap<String, Object>();
-        map.put("textView17", "you");
-        map.put("imageView6", R.drawable.avater);
-        list.add(map);
-
-        return list;
-    }
-
-
-
-    //异步搜索任务
+    /**
+     * 异步搜索任务
+     *
+     */
     private class GetDataTask extends AsyncTask<Void, Void , Integer>{
         private boolean add;
         private boolean isRefresh;
@@ -158,7 +122,16 @@ public class HousesListActivity extends Activity {
         @Override
         protected Integer doInBackground(Void... params){
             ((AppContext)getApplication()).getHouseList(add, isRefresh);
+
             return 1;
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+            super.onPostExecute(integer);
+            adapter.list.clear();
+            adapter.list.addAll(ac.getHouseList(false, false));
+            adapter.notifyDataSetChanged();
         }
     }
 }

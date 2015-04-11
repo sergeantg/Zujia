@@ -2,13 +2,13 @@ package com.zujia.android.zujia;
 
 import android.app.Application;
 import android.content.Context;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.baidu.mapapi.SDKInitializer;
 import com.zujia.android.zujia.model.HouseInfo;
 import com.zujia.android.zujia.model.PersonalInfo;
 import com.zujia.android.zujia.model.SearchCondition;
@@ -22,10 +22,12 @@ import java.io.InvalidClassException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
+import io.rong.imlib.RongIMClient.UserInfo;
 
 /**
  * 全局应用程序类：用于保存和调用全局应用配置及访问网络数据
@@ -34,16 +36,28 @@ import io.rong.imlib.RongIMClient;
 public class AppContext extends Application {
 
     private RestApi restApi;
+    private PersonalInfo pi;
+    private boolean login = false;	//登录状态
+    private int uid = 0;	//登录用户的id
+
+    public LocationClient mLocationClient;
     public SearchCondition condition;
     public List<HouseInfo> houseList;
-    private boolean login = false;	//登录状态
-    private int loginUid = 0;	//登录用户的id
 
     @Override
     public void onCreate() {
         super.onCreate();
         restApi = new RestApi();
+        rongInit();
+        baiduInit();
+    }
 
+    /**
+     * 融云功能初始化
+     * @return
+     */
+    private boolean rongInit(){
+        boolean re = true;
         String token = "Mvx131kv07Ox9esct1N5D5C3BleW4x8tlHuWbCsQJjU6eriHn/IR4kf0BA4Stult9mduJXfIXmymWR3HZqodFeTNGd6qG13V";
         // 初始化融云
         RongIM.init(this);
@@ -65,7 +79,57 @@ public class AppContext extends Application {
             });
         } catch (Exception e) {
             e.printStackTrace();
+            re = false;
         }
+
+        RongIM.setGetFriendsProvider(new RongIM.GetFriendsProvider() {
+            @Override
+            public List<RongIMClient.UserInfo> getFriends() {
+                return getFriendList();
+            }
+        });
+
+        RongIM.setGetUserInfoProvider(new RongIM.GetUserInfoProvider() {
+            @Override
+            public UserInfo getUserInfo(String userId) {
+                return new UserInfo(userId, getPersonalInfo(false).getUsername(), getPersonalInfo(false).getAvater());
+            }
+        }, false);
+
+        return re;
+    }
+
+    /**
+     * 百度地图初始化
+     */
+    private void baiduInit(){
+        mLocationClient = new LocationClient(this.getApplicationContext());
+
+        //设置定位选项
+        LocationClientOption option = new LocationClientOption();
+        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);//设置定位模式
+        option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
+        option.setScanSpan(5000);//设置发起定位请求的间隔时间为5000ms
+        option.setIsNeedAddress(true);//返回的定位结果包含地址信息
+        option.setNeedDeviceDirect(true);//返回的定位结果包含手机机头的方向
+
+        mLocationClient.setLocOption(option);
+
+        SDKInitializer.initialize(getApplicationContext());
+    }
+
+    /**
+     * 获取联系人列表
+     * @return list
+     */
+    private List<UserInfo> getFriendList(){
+        List<UserInfo> list = new ArrayList<RongIMClient.UserInfo>();
+        if(login) {
+            RongIMClient.UserInfo user1 = new RongIMClient.UserInfo("15620936889", "我", "http://http://www.qqzhi.com/touxiang/viewimg_229150.html?http://www.qqzhi.com/uploadpic/2014-09-12/055445721.jpg");
+            list.add(user1);
+
+        }
+        return list;
     }
 
     /**
@@ -91,8 +155,27 @@ public class AppContext extends Application {
      * 获取登录用户id
      * @return
      */
-    public int getLoginUid() {
-        return this.loginUid;
+    public int getUid() {
+        return this.uid;
+    }
+
+    /**
+     * 登陆方法
+     * @param phone
+     * @param psw
+     * @return
+     */
+    public int login(int phone, String psw){
+        if(isNetworkConnected()){
+            int re = restApi.login(phone, psw);
+
+            if(re == 0){
+                uid = phone;
+                login = true;
+            }
+            return re;
+        }
+        return 1;
     }
 
     /**
@@ -100,51 +183,9 @@ public class AppContext extends Application {
      */
     public void Logout() {
         this.login = false;
-        this.loginUid = 0;
+        this.uid = 0;
     }
 
-
-    public boolean getGPSSettings() {
-        LocationManager alm = (LocationManager) this
-                .getSystemService(Context.LOCATION_SERVICE);
-        if (!alm.isProviderEnabled(android.location.LocationManager.GPS_PROVIDER))
-            return false;
-        return true;
-    }
-
-    /**GPS定位
-     *
-     * @return
-     */
-    public Location getLocation()
-    {
-        // 获取位置管理服务
-        LocationManager locationManager;
-        String serviceName = Context.LOCATION_SERVICE;
-        locationManager = (LocationManager) this.getSystemService(serviceName);
-        // 查找到服务信息
-        Criteria criteria = new Criteria();
-        criteria.setAccuracy(Criteria.ACCURACY_FINE); // 高精度
-        criteria.setAltitudeRequired(false);
-        criteria.setBearingRequired(false);
-        criteria.setCostAllowed(true);
-        criteria.setPowerRequirement(Criteria.POWER_LOW); // 低功耗
-
-        String provider = locationManager.getBestProvider(criteria, true); // 获取GPS信息
-        Location location = locationManager.getLastKnownLocation(provider); // 通过GPS获取位置
-        if (location == null)
-            return null;
-        return location;
-    }
-
-    /**
-     * 由关键词定位
-     *
-     */
-    public Location getLocation(String key){
-        Location location = null;
-        return location;
-    }
    /**
     *获取房屋列表
     * @param isRefresh 是否主动刷新
@@ -165,32 +206,43 @@ public class AppContext extends Application {
         return houseList;
     }
 
-
     /**
      * 我的个人资料
      * @param isRefresh 是否主动刷新
      * @return
      */
     public PersonalInfo getPersonalInfo(boolean isRefresh){
-        PersonalInfo myinfo;
-        String key = "personal_info_" + loginUid;
-        if(isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
-            try{
-                myinfo = restApi.getPersonalInfo(loginUid);
-                if(myinfo != null){
-                    saveObject(myinfo, key);
+        if(login){
+
+            String key = "personal_info_" + uid;
+            if(isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
+                try{
+                    pi = restApi.getPersonalInfo(uid);
+                    if(pi != null){
+                        saveObject(pi, key);
+                    }
+                }catch(Exception e){
+                    pi = (PersonalInfo)readObject(key);
+                    if(pi == null)
+                        throw e;
                 }
-            }catch(Exception e){
-                myinfo = (PersonalInfo)readObject(key);
-                if(myinfo == null)
-                    throw e;
+            } else {
+                pi = (PersonalInfo)readObject(key);
+                if(pi == null)
+                    pi = new PersonalInfo();
             }
-        } else {
-            myinfo = (PersonalInfo)readObject(key);
-            if(myinfo == null)
-                myinfo = new PersonalInfo();
+            return pi;
         }
-        return myinfo;
+
+        ///DEBUG
+        pi = new PersonalInfo();
+        pi.setAvater("http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png");
+        pi.setUsername("奥巴马");
+        pi.setPhone(36889);
+        return pi;
+        ///END_DEBUG
+
+        //return null;
     }
 
     /**

@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.zujia.android.zujia.AppContext;
 import com.zujia.android.zujia.R;
 import com.zujia.android.zujia.activity.custom.CustomMainActivity;
 
@@ -124,7 +125,7 @@ public class LoginActivity extends Activity{
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(phone, password);
+            mAuthTask = new UserLoginTask(new Integer(phone), password);
             mAuthTask.execute((Void) null);
         }
     }
@@ -179,50 +180,48 @@ public class LoginActivity extends Activity{
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+    public class UserLoginTask extends AsyncTask<Void, Void, Integer> {
 
-        private final String mPhone;
+        private final int mPhone;
         private final String mPassword;
 
-        UserLoginTask(String phone, String password) {
+        UserLoginTask(int phone, String password) {
             mPhone = phone;
             mPassword = password;
         }
 
         @Override
-        protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
+        protected Integer doInBackground(Void... params) {
+            int re = 1;
 
             try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
+
+                re = ((AppContext)getApplication()).login(mPhone, mPassword);
+
+            } catch (Exception e) {
+                return 1;
             }
-
-            /*for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mPhone)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }*/
-
-            // TODO: register the new account here.
-            return true;
+            return re;
         }
 
         @Override
-        protected void onPostExecute(final Boolean success) {
+        protected void onPostExecute(final Integer success) {
             mAuthTask = null;
             showProgress(false);
 
-            if (success) {
-                startActivity(new Intent().setClass(getBaseContext(), CustomMainActivity.class));
-                finish();
-            } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+            switch (success){
+                case 0:
+                    startActivity(new Intent().setClass(getBaseContext(), CustomMainActivity.class));
+                    finish();
+                    break;
+                case 1:
+                    mPasswordView.setError(getString(R.string.error_incorrect_password));
+                    mPasswordView.requestFocus();
+                    break;
+                case 2:
+                    mPasswordView.setError(getString(R.string.error_incorrect_password));
+                    mPasswordView.requestFocus();
+                    break;
             }
         }
 

@@ -1,119 +1,125 @@
 package com.zujia.android.zujia.activity.custom;
 
 import android.app.ActionBar;
-import android.app.Activity;
-import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TabHost;
+import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+import com.zujia.android.zujia.AppContext;
 import com.zujia.android.zujia.R;
 import com.zujia.android.zujia.activity.SearchActivity;
 import com.zujia.android.zujia.activity.ServiceSecondMenuItemFragment;
 import com.zujia.android.zujia.activity.SettingActivity;
+import com.zujia.android.zujia.model.PersonalInfo;
 
-import io.rong.imkit.RongIM;
 
+public class CustomMainActivity extends FragmentActivity {
 
-public class CustomMainActivity extends Activity {
-
-    Handler mHandler;
+    private View [] vv = new View[10];//visability view
+    private View [] vc = new View[5];//color view
+    private ImageView [] iv = new ImageView[4];
+    private int lastPressedItem = 0;
+    private PersonalInfo pi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_main);
 
-        // 获取TabHost对象
+        getIntent().setData(Uri.parse("rong://com.zujia.android.zujia").buildUpon()
+                .appendPath("conversationlist").build());
+        setContentView(R.layout.activity_custom_main);
+        initView();
+        initData();
+    }
+
+    private void initView(){
+
+        vv[0] = findViewById(R.id.rent_hint);
+        vv[1] = findViewById(R.id.rent_arrow);
+        vv[2] = findViewById(R.id.life_hint);
+        vv[3] = findViewById(R.id.life_arrow);
+        vv[4] = findViewById(R.id.live_hint);
+        vv[5] = findViewById(R.id.live_arrow);
+        vv[6] = findViewById(R.id.appliance_hint);
+        vv[7] = findViewById(R.id.appliance_arrow);
+        vv[8] = findViewById(R.id.furniture_hint);
+        vv[9] = findViewById(R.id.furniture_arrow);
+        vc[0] = findViewById(R.id.layout_rent);
+        vc[1] = findViewById(R.id.layout_live);
+        vc[2] = findViewById(R.id.layout_appliance);
+        vc[3] = findViewById(R.id.layout_furniture);
+        vc[4] = findViewById(R.id.layout_life);
+
         final TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
-        // 如果没有继承TabActivity时，通过该种方法加载启动tabHost
+
         tabHost.setup();
 
         tabHost.addTab(tabHost.newTabSpec("0")
-                .setIndicator("消息", getResources().getDrawable(R.drawable.message)).setContent(
-                R.id.tab1));
+                .setIndicator(getLayoutInflater().inflate(R.layout.custom_tab_message, null))
+                .setContent(R.id.tab1));
         tabHost.addTab(tabHost.newTabSpec("1")
-                .setIndicator("联系记录", getResources().getDrawable(R.drawable.contact)).setContent(
-                R.id.tab2));
+                .setIndicator(getLayoutInflater().inflate(R.layout.custom_tab_contact, null))
+                .setContent(R.id.tab2));
         tabHost.addTab(tabHost.newTabSpec("2")
-                .setIndicator("租家帮", getResources().getDrawable(R.drawable.zujiabang)).setContent(
-                R.id.tab3));
-       // tabHost.addTab(tabHost.newTabSpec("tab1")
-          //      .setIndicator("我", getResources().getDrawable(R.drawable.me_meitu_1)).setContent(
-            //    R.id.tab4));
+                .setIndicator(getLayoutInflater().inflate(R.layout.custom_tab_zujiabang, null))
+                .setContent(R.id.tab3));
+        tabHost.addTab(tabHost.newTabSpec("3")
+                .setIndicator(getLayoutInflater().inflate(R.layout.custom_tab_me, null))
+                .setContent(R.id.tab4));
 
-        android.view.View view = getLayoutInflater().inflate(R.layout.custom_tab_me, null);
+        iv[0] = (ImageView)findViewById(R.id.imgV_tab_message);
+        iv[1] = (ImageView)findViewById(R.id.imgV_tab_contact);
+        iv[2] = (ImageView)findViewById(R.id.imgV_tab_zujiabang);
+        iv[3] = (ImageView)findViewById(R.id.imgV_tab_me);
 
-        tabHost.addTab(tabHost.newTabSpec("3").setIndicator(view).setContent(
-                      R.id.tab4));
+        for(ImageView i:iv){
+            i.setImageAlpha(40);
+        }
 
-        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener(){
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             public void onTabChanged(String tabId) {
                 ActionBar b = getActionBar();
 
+                for(ImageView i:iv)
+                    i.setImageAlpha(40);
 
-                //tabHost.getTabWidget().getChildAt(0).setAlpha(255);
+                iv[new Integer(tabId)].setImageAlpha(255);
 
-               // tabHost.getCurrentTabView();
-                //findViewById(R.id.imgV_tab_message).setAlpha(255);
-                //findViewById(R.id.imgV_tab_contact).setAlpha(255);
-                //findViewById(R.id.imgV_tab_zujiabang).setAlpha(255);
-                //findViewById(R.id.imgV_tab_me).setAlpha(255);
-                //findViewById(R.id.txtV_tab_me).setAlpha(255);
-                Log.i("test", tabId);
-                switch(tabId){
-
+                switch (tabId){
                     case "0":
-                       // findViewById(R.id.imgV_tab_message).setAlpha(0);
-                        // 点击按钮发起聊天会话。
-
                         b.setTitle(R.string.message_main);
                         break;
                     case "1":
-                        //findViewById(R.id.imgV_tab_contact).setAlpha(0);
                         b.setTitle(R.string.contact_main);
                         break;
                     case "2":
-                        //findViewById(R.id.imgV_tab_zujiabang).setAlpha(0);
                         b.setTitle(R.string.zujiabang_main);
                         break;
                     case "3":
                         b.setTitle(R.string.me_main);
-                        //findViewById(R.id.imgV_tab_me).setAlpha(100);
-                        //findViewById(R.id.txtV_tab_me).setAlpha(100);
                         break;
-
                 }
             }
         });
 
 
-        mHandler = new Handler();
-
-        /////////////////////////
-        findViewById(R.id.buttondd).setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            mHandler.post(new Runnable() {
-                              @Override
-                              public void run() {
-                                  String userId = "1";
-                                  String title = "自问自答";
-
-                                  RongIM.getInstance().startPrivateChat(CustomMainActivity.this, userId, title);
-                              }
-                          }
-            );
-        }
-    });
     }
 
+    private void initData(){
+        new GetPersonalInfoTask((TextView)findViewById(R.id.txtVName), (ImageView)findViewById(R.id.imgVAvater), this).execute();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -124,9 +130,6 @@ public class CustomMainActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
 
         //noinspection SimplifiableIfStatement
         switch (item.getItemId()){
@@ -134,8 +137,6 @@ public class CustomMainActivity extends Activity {
                 startActivity(new Intent().setClass(this, SearchActivity.class));
             break;
         }
-
-        ;
 
         return super.onOptionsItemSelected(item);
     }
@@ -162,83 +163,93 @@ public class CustomMainActivity extends Activity {
     //discovery tab click methods
     public void menuClick(View v){
 
-        toggleVisiable(View.INVISIBLE);
-        ServiceSecondMenuItemFragment f = new ServiceSecondMenuItemFragment();
-        FrameLayout fl = (FrameLayout)findViewById(R.id.menu_container);
-        FragmentTransaction transaction = getFragmentManager()
-                .beginTransaction();
-
-        Bundle b = new Bundle();
-
         int id = v.getId();
+        int type = 0;
+        int color = 0;
+        FrameLayout fl = (FrameLayout)findViewById(R.id.menu_container);
+        FragmentTransaction transaction =
+                getSupportFragmentManager().beginTransaction();
+
+        toggleVisiable(View.INVISIBLE);
+        lastPressedItem = id;
 
         switch (id){
             case R.id.layout_rent:
-                b.putInt("type", 0);
-                toggleColor(0);
+                type = 0;
+                color = getResources().getColor(R.color.color1);
                 break;
             case R.id.layout_live:
-                b.putInt("type", 1);
-                toggleColor(1);
+                type = 1;
+                color = getResources().getColor(R.color.color1);
                 break;
             case R.id.layout_appliance:
-                b.putInt("type", 2);
-                toggleColor(2);
+                type = 2;
+                color = getResources().getColor(R.color.color1);
                 break;
             case R.id.layout_furniture:
-                b.putInt("type", 3);
-                toggleColor(3);
+                type = 3;
+                color = getResources().getColor(R.color.color1);
                 break;
             case R.id.layout_life:
-                b.putInt("type", 4);
-                toggleColor(4);
+                type = 4;
+                color = getResources().getColor(R.color.color1);
                 break;
         }
 
-        f.setArguments(b);
+        toggleColor(type, color);
+
+        ServiceSecondMenuItemFragment f =
+                ServiceSecondMenuItemFragment.newInstance(type, color);
         transaction.replace(R.id.menu_container, f);
-        // 把当前Fragment添加至回退栈，通过返回键返回时可以导航到上一个Fragment状态
-        transaction.addToBackStack(null);
-        // 提交
+
         transaction.commit();
     }
+
+    public void cameraClick(View view){
+
+    }
+
+    public void writeClick(View view){
+
+    }
+
     //
     private void toggleVisiable(int v){
-        findViewById(R.id.rent_hint).setVisibility(v);
-        findViewById(R.id.rent_arrow).setVisibility(v);
-        findViewById(R.id.life_hint).setVisibility(v);
-        findViewById(R.id.life_arrow).setVisibility(v);
-        findViewById(R.id.live_hint).setVisibility(v);
-        findViewById(R.id.live_arrow).setVisibility(v);
-        findViewById(R.id.appliance_hint).setVisibility(v);
-        findViewById(R.id.appliance_arrow).setVisibility(v);
-        findViewById(R.id.furniture_hint).setVisibility(v);
-        findViewById(R.id.furniture_arrow).setVisibility(v);
+        for(View i:vv) {
+            i.setVisibility(v);
+        }
     }
 
-    private void toggleColor(int p){
-        if(p==0)
-            findViewById(R.id.layout_rent).setBackgroundColor(0xfff9b294);
-        else
-            findViewById(R.id.layout_rent).setBackgroundColor(0xffffffff);
-        if(p==1)
-            findViewById(R.id.layout_live).setBackgroundColor(0xfff67280);
-        else
-            findViewById(R.id.layout_live).setBackgroundColor(0xffffffff);
-        if(p==2)
-            findViewById(R.id.layout_appliance).setBackgroundColor(0xffc16b84);
-        else
-            findViewById(R.id.layout_appliance).setBackgroundColor(0xffffffff);
-        if(p==3)
-            findViewById(R.id.layout_furniture).setBackgroundColor(0xff6e5d7f);
-        else
-            findViewById(R.id.layout_furniture).setBackgroundColor(0xffffffff);
-        if(p==4)
-            findViewById(R.id.layout_life).setBackgroundColor(0xff355c7d);
-        else
-            findViewById(R.id.layout_life).setBackgroundColor(0xffffffff);
-
+    private void toggleColor(int p, int color){
+        for(View i:vc){
+            i.setBackgroundColor(0xffffffff);
+        }
+        vc[p].setBackgroundColor(color);
     }
 
+    private class GetPersonalInfoTask extends AsyncTask<Void, Void, Void>{
+
+        private TextView name;
+        private ImageView avater;
+        private Context context;
+
+        public GetPersonalInfoTask(TextView n, ImageView a, Context c){
+            this.name = n;
+            this.avater = a;
+            this.context = c;
+        }
+        @Override
+        protected Void doInBackground(Void... params) {
+            pi = ((AppContext)getApplication()).getPersonalInfo(true);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            name.setText(pi.getUsername());
+            Picasso.with(context).load(pi.getAvater()).into(avater);
+        }
+    }
 }
 

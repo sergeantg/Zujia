@@ -16,9 +16,6 @@ import java.util.List;
 /**
  * Created by sergeantg_local on 2015/4/10.
  */
-
-
-
 public class HouseListAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
@@ -35,10 +32,7 @@ public class HouseListAdapter extends BaseAdapter {
         public TextView title;
         public TextView distance;
         public ImageView detail;
-        public TextView elevator;
-        public TextView decoration;
-        public TextView pattern;
-        public TextView area;
+        public TextView des;
         public ImageView avater;
 
     }
@@ -69,16 +63,13 @@ public class HouseListAdapter extends BaseAdapter {
 
             holder = new ViewHodler();
 
-            convertView = mInflater.inflate(R.layout.house_list_item, null);
+            convertView = mInflater.inflate(R.layout.item_house_list, parent, false);
 
             holder.title = (TextView) convertView.findViewById(R.id.txtVTitle);
             holder.distance = (TextView) convertView.findViewById(R.id.txtVDistance);
             holder.detail = (ImageView) convertView.findViewById(R.id.imgVDetail);
-            holder.elevator = (TextView) convertView.findViewById(R.id.txtVElevetor);
-            holder.pattern = (TextView) convertView.findViewById(R.id.txtVPattern);
-            holder.area = (TextView) convertView.findViewById(R.id.txtVArea);
-            holder.decoration = (TextView) convertView.findViewById(R.id.txtVDecoration);
             holder.avater = (ImageView) convertView.findViewById(R.id.imgVLandlordAvater);
+            holder.des = (TextView) convertView.findViewById(R.id.txtVDetailDes);
             convertView.setTag(holder);
 
         } else {
@@ -86,7 +77,11 @@ public class HouseListAdapter extends BaseAdapter {
             holder = (ViewHodler) convertView.getTag();
         }
 
-       // holder.title.setText(list.get(position));
+        holder.title.setText(list.get(position).getTitile());
+        //holder.distance.setText(list.get(position).getDis);
+        //holder.detail
+        //holder.des.setText(
+        //holder.avater
 
         return convertView;
     }

@@ -1,29 +1,29 @@
 package com.zujia.android.zujia.activity;
 
-import android.app.ListFragment;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.zujia.android.zujia.R;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ServiceSecondMenuItemFragment extends ListFragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_TYPE = "type";
+    private static final String ARG_COLOR= "color";
 
     private int type;
+    private int color;
 
     // TODO: Rename and change types of parameters
-    public static ServiceSecondMenuItemFragment newInstance(int type) {
+    public static ServiceSecondMenuItemFragment newInstance(int type, int color) {
         ServiceSecondMenuItemFragment fragment = new ServiceSecondMenuItemFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_TYPE, type);
+        args.putInt(ARG_COLOR, color);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,25 +50,5 @@ public class ServiceSecondMenuItemFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-    }
-
-    public void setType(int t){
-        this.type = t;
-    }
-
-    private List<String> getData(int t){
-        List<String> l = new ArrayList<String>();
-
-        switch (t){
-            case 0:
-                l.add("1");
-                l.add("2");
-                break;
-            case 1:
-                l.add("a");
-                l.add("b");
-                break;
-        }
-        return l;
     }
 }
