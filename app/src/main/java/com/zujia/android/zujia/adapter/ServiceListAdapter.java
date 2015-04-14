@@ -20,9 +20,11 @@ import java.util.List;
 public class ServiceListAdapter extends BaseAdapter{
     private LayoutInflater mInflater;
     public List<ServiceInfo> list;
+    private Context c;
 
     public ServiceListAdapter(Context context, List<ServiceInfo> l){
         this.list = l;
+        c = context;
         mInflater = LayoutInflater.from(context);
     }
 
@@ -59,7 +61,7 @@ public class ServiceListAdapter extends BaseAdapter{
 
         vh.title.setText(list.get(position).getName());
         vh.des.setText(list.get(position).getDescription());
-        //vh.logo.set
+        vh.logo.setImageDrawable(c.getDrawable(R.drawable.service_logo));
         vh.rate.setRating(list.get(position).getRate());
 
         return convertView;

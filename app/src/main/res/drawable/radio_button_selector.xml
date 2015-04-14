@@ -5,6 +5,11 @@
         android:state_checked="true">
         <shape>
             <stroke android:width="3dp" android:color="@color/brown" />
+            <padding
+                android:top="0.1dp"
+                android:bottom="0.1dp"
+                android:left="0.1dp"
+                android:right="0.1dp"/>
         </shape>
     </item>
 
@@ -13,6 +18,11 @@
         android:state_checked="false">
         <shape>
             <stroke android:width="3dp" android:color="@color/brown" />
+            <padding
+                android:top="0.1dp"
+                android:bottom="0.1dp"
+                android:left="0.1dp"
+                android:right="0.1dp"/>
         </shape>
     </item>
 

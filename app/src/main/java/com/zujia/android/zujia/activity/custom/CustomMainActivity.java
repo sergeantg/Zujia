@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.zujia.android.zujia.AppContext;
 import com.zujia.android.zujia.R;
+import com.zujia.android.zujia.activity.LoginActivity;
 import com.zujia.android.zujia.activity.SearchActivity;
 import com.zujia.android.zujia.activity.ServiceSecondMenuItemFragment;
 import com.zujia.android.zujia.activity.SettingActivity;
@@ -30,6 +31,10 @@ public class CustomMainActivity extends FragmentActivity {
     private View [] vv = new View[10];//visability view
     private View [] vc = new View[5];//color view
     private ImageView [] iv = new ImageView[4];
+    private TextView title;
+    private View titleLeftBtn;
+    private View acbar;
+    private FrameLayout fl;
     private int lastPressedItem = 0;
     private PersonalInfo pi;
 
@@ -62,7 +67,13 @@ public class CustomMainActivity extends FragmentActivity {
         vc[3] = findViewById(R.id.layout_furniture);
         vc[4] = findViewById(R.id.layout_life);
 
+        title = (TextView)findViewById(R.id.ivTitleName);
+        titleLeftBtn = findViewById(R.id.ivTitleBtnLeft);
+        fl = (FrameLayout)findViewById(R.id.menu_container);
+        acbar = findViewById(R.id.layout_top);
         final TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
+
+        titleLeftBtn.setVisibility(View.GONE);
 
         tabHost.setup();
 
@@ -84,9 +95,14 @@ public class CustomMainActivity extends FragmentActivity {
         iv[2] = (ImageView)findViewById(R.id.imgV_tab_zujiabang);
         iv[3] = (ImageView)findViewById(R.id.imgV_tab_me);
 
+
+
         for(ImageView i:iv){
             i.setImageAlpha(40);
         }
+
+        tabHost.setCurrentTab(0);
+        iv[0].setImageAlpha(255);
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             public void onTabChanged(String tabId) {
@@ -94,21 +110,33 @@ public class CustomMainActivity extends FragmentActivity {
 
                 for(ImageView i:iv)
                     i.setImageAlpha(40);
+                titleLeftBtn.setVisibility(View.GONE);
+                toggleVisiable(false, 0, 0);
+                lastPressedItem = -1;
 
+                //当前选项卡点亮
                 iv[new Integer(tabId)].setImageAlpha(255);
 
                 switch (tabId){
                     case "0":
-                        b.setTitle(R.string.message_main);
+                        //b.setTitle(R.string.message_main);
+                        title.setText(R.string.message_main);
+                        acbar.setVisibility(View.VISIBLE);
                         break;
                     case "1":
-                        b.setTitle(R.string.contact_main);
+                        //b.setTitle(R.string.contact_main);
+                        title.setText(R.string.contact_main);
+                        acbar.setVisibility(View.VISIBLE);
                         break;
                     case "2":
-                        b.setTitle(R.string.zujiabang_main);
+                        //b.setTitle(R.string.zujiabang_main);
+                        title.setText(R.string.zujiabang_main);
+                        acbar.setVisibility(View.VISIBLE);
                         break;
                     case "3":
-                        b.setTitle(R.string.me_main);
+                        //b.setTitle(R.string.me_main);
+                        title.setText(R.string.me_main);
+                        acbar.setVisibility(View.GONE);
                         break;
                 }
             }
@@ -158,6 +186,8 @@ public class CustomMainActivity extends FragmentActivity {
         startActivity(new Intent().setClass(this, AboutActivity.class));
     }
     public void logoutClick(View v){
+        ((AppContext)getApplication()).logout();
+        startActivity(new Intent().setClass(this, LoginActivity.class));
     }
 
     //discovery tab click methods
@@ -166,43 +196,47 @@ public class CustomMainActivity extends FragmentActivity {
         int id = v.getId();
         int type = 0;
         int color = 0;
-        FrameLayout fl = (FrameLayout)findViewById(R.id.menu_container);
+        boolean open = false;
+
         FragmentTransaction transaction =
                 getSupportFragmentManager().beginTransaction();
 
-        toggleVisiable(View.INVISIBLE);
-        lastPressedItem = id;
-
-        switch (id){
-            case R.id.layout_rent:
-                type = 0;
-                color = getResources().getColor(R.color.color1);
-                break;
-            case R.id.layout_live:
-                type = 1;
-                color = getResources().getColor(R.color.color1);
-                break;
-            case R.id.layout_appliance:
-                type = 2;
-                color = getResources().getColor(R.color.color1);
-                break;
-            case R.id.layout_furniture:
-                type = 3;
-                color = getResources().getColor(R.color.color1);
-                break;
-            case R.id.layout_life:
-                type = 4;
-                color = getResources().getColor(R.color.color1);
-                break;
+        if(lastPressedItem == id){//隐藏fragment,显示vv,重置lastPressedItem
+            color = getResources().getColor(R.color.white);
+            lastPressedItem = -1;
+            open = false;
+        }else{
+            switch (id){
+                case R.id.layout_rent:
+                    type = 0;
+                    color = getResources().getColor(R.color.color1);
+                    break;
+                case R.id.layout_live:
+                    type = 1;
+                    color = getResources().getColor(R.color.color2);
+                    break;
+                case R.id.layout_appliance:
+                    type = 2;
+                    color = getResources().getColor(R.color.color3);
+                    break;
+                case R.id.layout_furniture:
+                    type = 3;
+                    color = getResources().getColor(R.color.color4);
+                    break;
+                case R.id.layout_life:
+                    type = 4;
+                    color = getResources().getColor(R.color.color5);
+                    break;
+            }
+            open = true;
+            lastPressedItem = id;
+            ServiceSecondMenuItemFragment f =
+                    ServiceSecondMenuItemFragment.newInstance(type, color);
+            transaction.replace(R.id.menu_container, f);
+            transaction.commit();
         }
 
-        toggleColor(type, color);
-
-        ServiceSecondMenuItemFragment f =
-                ServiceSecondMenuItemFragment.newInstance(type, color);
-        transaction.replace(R.id.menu_container, f);
-
-        transaction.commit();
+        toggleVisiable(open, type, color);
     }
 
     public void cameraClick(View view){
@@ -213,18 +247,32 @@ public class CustomMainActivity extends FragmentActivity {
 
     }
 
-    //
-    private void toggleVisiable(int v){
-        for(View i:vv) {
-            i.setVisibility(v);
-        }
+    public void leftBtnClick(View v){
+        toggleVisiable(false, 0, 0);
     }
-
-    private void toggleColor(int p, int color){
-        for(View i:vc){
-            i.setBackgroundColor(0xffffffff);
+    //
+    private void toggleVisiable(boolean open, int p, int color){
+        if(open){
+            for(View i:vv) {
+                i.setVisibility(View.GONE);
+            }
+            titleLeftBtn.setVisibility(View.VISIBLE);
+            fl.setVisibility(View.VISIBLE);
+            //设置颜色
+            for(View i:vc){
+                i.setBackgroundColor(0xffffffff);
+            }
+            vc[p].setBackgroundColor(color);
+        }else{
+            for(View i:vv) {
+                i.setVisibility(View.VISIBLE);
+            }
+            titleLeftBtn.setVisibility(View.GONE);
+            fl.setVisibility(View.GONE);
+            for(View i:vc){
+                i.setBackgroundColor(0xffffffff);
+            }
         }
-        vc[p].setBackgroundColor(color);
     }
 
     private class GetPersonalInfoTask extends AsyncTask<Void, Void, Void>{

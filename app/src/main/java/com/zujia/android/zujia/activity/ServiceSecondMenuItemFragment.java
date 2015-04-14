@@ -1,5 +1,6 @@
 package com.zujia.android.zujia.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.View;
@@ -50,5 +51,6 @@ public class ServiceSecondMenuItemFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
+        startActivity(new Intent().setClass(getActivity(), ServiceListActivity.class));
     }
 }

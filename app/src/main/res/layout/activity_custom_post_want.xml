@@ -13,12 +13,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txtV_post_want_location"/>
+            android:text="@string/txtV_post_want_location"
+            android:textSize="@dimen/medium_text"
+            android:textColor="@color/brown" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/eTxtLocation" />
+            android:id="@+id/eTxtLocation"
+            style="@style/edit_box"
+            android:layout_marginTop="5dp" />
     </LinearLayout>
 
 
@@ -28,7 +32,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txtV_post_want_money"/>
+            android:text="@string/txtV_post_want_money"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/medium_text" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -42,13 +48,18 @@
                 android:inputType="number"
                 android:ems="10"
                 android:id="@+id/eTxtMoney"
-                android:numeric="integer" />
+                android:numeric="integer"
+                style="@style/edit_box"
+                android:layout_marginTop="5dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txtV_post_want_tag"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="@color/brown"
+                android:textSize="@dimen/medium_text"
+                android:gravity="center_horizontal" />
         </LinearLayout>
 
     </LinearLayout>
@@ -62,13 +73,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txtV_post_want_date"/>
+            android:text="@string/txtV_post_want_date"
+            android:textSize="@dimen/medium_text"
+            android:textColor="@color/brown" />
 
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="datetime"
-            android:id="@+id/eTxtDate" />
+            android:id="@+id/eTxtDate"
+            style="@style/edit_box"
+            android:layout_marginTop="5dp" />
 
     </LinearLayout>
 
@@ -79,12 +94,60 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txtV_post_type"/>
+            android:text="@string/txtV_post_type"
+            android:textSize="@dimen/medium_text"
+            android:textColor="@color/brown" />
 
-        <Spinner
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:orientation="horizontal"
+            android:background="@drawable/button_group_backgroud"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spinnerType" />
+            android:layout_marginTop="5dp">
+
+            <RadioButton
+                style="@style/RadioButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/search_one_room"
+                android:id="@+id/radioButton"
+                android:button="@null"
+                android:layout_weight="1"
+                android:onClick="radioButtonClick"
+                android:checked="true" />
+
+            <RadioButton
+                style="@style/RadioButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/search_two_rooms"
+                android:id="@+id/radioButton2"
+                android:button="@null"
+                android:layout_weight="1"
+                android:onClick="radioButtonClick" />
+
+            <RadioButton
+                style="@style/RadioButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/search_three_rooms"
+                android:id="@+id/radioButton3"
+                android:button="@null"
+                android:layout_weight="1"
+                android:onClick="radioButtonClick" />
+
+            <RadioButton
+                style="@style/RadioButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/search_more_rooms"
+                android:id="@+id/radioButton4"
+                android:button="@null"
+                android:layout_weight="1"
+                android:onClick="radioButtonClick" />
+        </RadioGroup>
+
     </LinearLayout>
 
 
@@ -94,22 +157,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txtV_post_want_other"/>
+            android:text="@string/txtV_post_want_other"
+            android:textSize="@dimen/medium_text"
+            android:textColor="@color/brown" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/eTxtOther" />
+            android:id="@+id/eTxtOther"
+            style="@style/edit_box"
+            android:layout_marginTop="5dp" />
 
     </LinearLayout>
 
     <Button
-        style="@style/ItemStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/Button"
         android:text="@string/btn_custom_certification_submit"
         android:id="@+id/btnSubmit"
-        android:layout_gravity="center_horizontal"
-        android:onClick="submitClick"
-        android:background="@color/orange" />
+        android:onClick="submitClick"/>
 
 
 

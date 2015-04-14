@@ -5,13 +5,15 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.SDKInitializer;
 import com.zujia.android.zujia.model.HouseInfo;
+import com.zujia.android.zujia.model.LoginResponse;
 import com.zujia.android.zujia.model.PersonalInfo;
 import com.zujia.android.zujia.model.SearchCondition;
+import com.zujia.android.zujia.model.ServiceInfo;
 import com.zujia.android.zujia.service.RestApi;
 
 import java.io.File;
@@ -37,18 +39,22 @@ public class AppContext extends Application {
 
     private RestApi restApi;
     private PersonalInfo pi;
-    private boolean login = false;	//登录状态
-    private int uid = 0;	//登录用户的id
+    private String uid = null;	//登录用户的id
+    public int uType = -1;
 
     public LocationClient mLocationClient;
-    public SearchCondition condition;
+    public SearchCondition condition = new SearchCondition();
     public List<HouseInfo> houseList;
 
     @Override
     public void onCreate() {
         super.onCreate();
         restApi = new RestApi();
-        rongInit();
+
+        // 初始化融云
+        RongIM.init(this);
+        // 连接融云服务器。
+        rongInit("Mvx131kv07Ox9esct1N5D5C3BleW4x8tlHuWbCsQJjU6eriHn/IR4kf0BA4Stult9mduJXfIXmymWR3HZqodFeTNGd6qG13V");
         baiduInit();
     }
 
@@ -56,12 +62,8 @@ public class AppContext extends Application {
      * 融云功能初始化
      * @return
      */
-    private boolean rongInit(){
-        boolean re = true;
-        String token = "Mvx131kv07Ox9esct1N5D5C3BleW4x8tlHuWbCsQJjU6eriHn/IR4kf0BA4Stult9mduJXfIXmymWR3HZqodFeTNGd6qG13V";
-        // 初始化融云
-        RongIM.init(this);
-        // 连接融云服务器。
+    private boolean rongInit( String token){
+
         try {
             RongIM.connect(token, new RongIMClient.ConnectCallback() {
 
@@ -79,7 +81,7 @@ public class AppContext extends Application {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            re = false;
+            return false;
         }
 
         RongIM.setGetFriendsProvider(new RongIM.GetFriendsProvider() {
@@ -96,7 +98,7 @@ public class AppContext extends Application {
             }
         }, false);
 
-        return re;
+        return true;
     }
 
     /**
@@ -111,11 +113,11 @@ public class AppContext extends Application {
         option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
         option.setScanSpan(5000);//设置发起定位请求的间隔时间为5000ms
         option.setIsNeedAddress(true);//返回的定位结果包含地址信息
-        option.setNeedDeviceDirect(true);//返回的定位结果包含手机机头的方向
+        option.setNeedDeviceDirect(false);//返回的定位结果包含手机机头的方向
 
         mLocationClient.setLocOption(option);
 
-        SDKInitializer.initialize(getApplicationContext());
+        //SDKInitializer.initialize(getApplicationContext());
     }
 
     /**
@@ -124,10 +126,9 @@ public class AppContext extends Application {
      */
     private List<UserInfo> getFriendList(){
         List<UserInfo> list = new ArrayList<RongIMClient.UserInfo>();
-        if(login) {
+        if(true) {
             RongIMClient.UserInfo user1 = new RongIMClient.UserInfo("15620936889", "我", "http://http://www.qqzhi.com/touxiang/viewimg_229150.html?http://www.qqzhi.com/uploadpic/2014-09-12/055445721.jpg");
             list.add(user1);
-
         }
         return list;
     }
@@ -148,14 +149,16 @@ public class AppContext extends Application {
      * @return
      */
     public boolean isLogin() {
-        return login;
+        if(uid!=null)
+            return true;
+        return false;
     }
 
     /**
      * 获取登录用户id
      * @return
      */
-    public int getUid() {
+    public String getUid() {
         return this.uid;
     }
 
@@ -165,15 +168,18 @@ public class AppContext extends Application {
      * @param psw
      * @return
      */
-    public int login(int phone, String psw){
-        if(isNetworkConnected()){
-            int re = restApi.login(phone, psw);
+    public int login( String phone, String psw){
 
-            if(re == 0){
+        if(isNetworkConnected()){
+            LoginResponse lr = restApi.login(phone, psw);
+            if("0".equals(lr.getResponse()))
+            {
                 uid = phone;
-                login = true;
+                uType = new Integer(lr.getUserType());
+                return 0;
             }
-            return re;
+        }else {
+            Toast.makeText(this, "网络不可用", Toast.LENGTH_SHORT).show();
         }
         return 1;
     }
@@ -181,9 +187,9 @@ public class AppContext extends Application {
     /**
      * 用户注销
      */
-    public void Logout() {
-        this.login = false;
-        this.uid = 0;
+    public void logout() {
+        this.uid = null;
+        this.uType = -1;
     }
 
    /**
@@ -206,13 +212,27 @@ public class AppContext extends Application {
         return houseList;
     }
 
+    public List<ServiceInfo> getServiceList(String tag){
+        List<ServiceInfo> re = new ArrayList<>();
+        ServiceInfo temp = new ServiceInfo();
+        temp.setName("天津鸿运搬家公司");
+        temp.setRate(5);
+        temp.setDescription("本公司专业承接居民搬家，学生搬家，小面搬家，拆装各种家具，京津唐快运");
+
+        re.add(temp);
+        re.add(temp);
+        re.add(temp);
+        re.add(temp);
+        return  re;
+
+    }
     /**
      * 我的个人资料
      * @param isRefresh 是否主动刷新
      * @return
      */
     public PersonalInfo getPersonalInfo(boolean isRefresh){
-        if(login){
+        if(isLogin()){
 
             String key = "personal_info_" + uid;
             if(isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {

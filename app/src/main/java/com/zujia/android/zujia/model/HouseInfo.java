@@ -174,4 +174,48 @@ public class HouseInfo extends Base{
     public void setPay(String pay) {
         this.pay = pay;
     }
+
+    public String getMiaoshu() {
+        return "";
+    }
+
+    public String getJuli() {
+        return "";
+    }
+
+    public String getDizhi() {
+        return null;
+    }
+
+    public String getFangxing() {
+        return null;
+    }
+
+    public String getChuzu() {
+        return null;
+    }
+
+    public String getLouceng() {
+        return null;
+    }
+
+    public String getZuizaoruzhu() {
+        return null;
+    }
+
+    public String getZhuangxiuqingkuang() {
+        return null;
+    }
+
+    public String getJiadian() {
+        return null;
+    }
+
+    public String getJiaju() {
+        return null;
+    }
+
+    public String getQita() {
+        return null;
+    }
 }

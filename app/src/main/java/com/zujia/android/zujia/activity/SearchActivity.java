@@ -13,11 +13,7 @@ import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
-import com.baidu.mapapi.search.geocode.GeoCodeOption;
-import com.baidu.mapapi.search.geocode.GeoCodeResult;
-import com.baidu.mapapi.search.geocode.GeoCoder;
-import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
-import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
+import com.baidu.location.LocationClient;
 import com.zujia.android.zujia.AppContext;
 import com.zujia.android.zujia.R;
 import com.zujia.android.zujia.service.RestApi;
@@ -28,7 +24,8 @@ public class SearchActivity extends Activity {
     private String key;
     private AppContext ac;
     private MyLocationListener mLoListener;
-    private GeoCoder mSearch;
+    private LocationClient mLocationClient;
+    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,26 +34,10 @@ public class SearchActivity extends Activity {
 
         ac = (AppContext)getApplication();
         mLoListener = new MyLocationListener();
-        mSearch = GeoCoder.newInstance();
-        rooms = 0;
+        rooms = 1;
+        editText = (EditText)findViewById(R.id.editText_search_key);
 
-        //设置地理位置编码回调
-        mSearch.setOnGetGeoCodeResultListener(new OnGetGeoCoderResultListener() {
-            @Override
-            public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
-                ac.condition.reset();
-                ac.condition.latitude = geoCodeResult.getLocation().latitude;
-                ac.condition.longitude = geoCodeResult.getLocation().longitude;
-                //new GetDataTask(false, true).execute();
-                Toast.makeText(getApplicationContext(), geoCodeResult.getAddress() + geoCodeResult.getLocation().latitude,
-                        Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
-
-            }
-        });
+        mLocationClient = ac.mLocationClient;
     }
 
     @Override
@@ -68,9 +49,6 @@ public class SearchActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -111,13 +89,15 @@ public class SearchActivity extends Activity {
      * @param view
      */
     public void searchClick(View view){
-        key = ((EditText)findViewById(R.id.editText_search_key)).getText().toString();
-
-        key = "南开大学";
-        ac.condition.reset();
-        ac.condition.rooms = rooms;
-        mSearch.geocode(new GeoCodeOption()
-                .city("天津").address(key));
+        key = editText.getText().toString();
+        if(key == null || "".equals(key)){
+            editText.setError("请输入正确地名");
+        }else{
+            ac.condition.reset();
+            ac.condition.key = key;
+            ac.condition.rooms = rooms;
+            new GetDataTask(false, true).execute();
+        }
     }
 
     /**搜索附近房屋
@@ -126,9 +106,12 @@ public class SearchActivity extends Activity {
      */
     public void aroundClick(View view){
 
-        ac.mLocationClient.registerLocationListener(mLoListener);
+        mLocationClient.registerLocationListener(mLoListener);
+        mLocationClient.start();
 
-        ac.mLocationClient.requestLocation();
+        mLocationClient.requestLocation();
+        Toast.makeText(getApplicationContext(), "aroundclick",
+                Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -138,11 +121,17 @@ public class SearchActivity extends Activity {
 
         @Override
         public void onReceiveLocation(BDLocation location) {
-            ac.mLocationClient.unRegisterLocationListener(mLoListener);
+
             ac.condition.reset();
-            ac.condition.latitude = location.getLatitude();
-            ac.condition.longitude = location.getLongitude();
+            if(location.getAddrStr() != null)
+                ac.condition.key = location.getAddrStr();
+
             new GetDataTask(false, true).execute();
+
+            Toast.makeText(getApplicationContext(), "you location:" + location.getAddrStr(),
+                    Toast.LENGTH_SHORT).show();
+            ac.mLocationClient.unRegisterLocationListener(mLoListener);
+            ac.mLocationClient.stop();
         }
     }
     /**
@@ -164,6 +153,9 @@ public class SearchActivity extends Activity {
         }
     }
 
+    /**
+     * DEBUG
+     */
     private void Douban(){
         RestApi api = new RestApi();
         com.zujia.android.zujia.model.DoubanTest t = new com.zujia.android.zujia.model.DoubanTest();

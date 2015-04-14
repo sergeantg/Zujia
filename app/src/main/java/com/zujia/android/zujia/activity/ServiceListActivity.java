@@ -5,16 +5,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.zujia.android.zujia.AppContext;
 import com.zujia.android.zujia.R;
+import com.zujia.android.zujia.adapter.ServiceListAdapter;
 
 public class ServiceListActivity extends ListActivity {
 
+    ServiceListAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_list);
 
-
+        adapter = new ServiceListAdapter(this, ((AppContext)getApplication()).getServiceList(""));
+        setListAdapter(adapter);
     }
 
 

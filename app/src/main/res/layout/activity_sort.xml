@@ -10,13 +10,19 @@
     <TextView
         style="@style/ItemStyle"
         android:text="@string/txtV_sort_default"
-        android:onClick="defaultClick"/>
+        android:onClick="defaultClick"
+        android:textSize="@dimen/medium_text"
+        android:textColor="@color/brown" />
     <TextView
         style="@style/ItemStyle"
         android:text="@string/txtV_sort_money"
-        android:onClick="moneyClick"/>
+        android:onClick="moneyClick"
+        android:textColor="@color/brown"
+        android:textSize="@dimen/medium_text" />
     <TextView
         style="@style/ItemStyle"
         android:text="@string/txtV_sort_distance"
-        android:onClick="distanceClick"/>
+        android:onClick="distanceClick"
+        android:textColor="@color/brown"
+        android:textSize="@dimen/medium_text" />
 </LinearLayout>

@@ -33,6 +33,7 @@ public class SearchCondition{
     }
 
     public void reset(){
+        key = "";
         longitude = 0;
         latitude = 0;
         certification = 0;

@@ -8,19 +8,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.zujia.android.zujia.AppContext;
 import com.zujia.android.zujia.R;
 import com.zujia.android.zujia.adapter.HouseListAdapter;
-
-import cn.trinea.android.common.view.DropDownListView;
 
 
 public class HousesListActivity extends Activity {
 
     private HouseListAdapter adapter;
     private AppContext ac = (AppContext)getApplication();
-    private DropDownListView lv;
+    private ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,22 +28,15 @@ public class HousesListActivity extends Activity {
 
         adapter = new HouseListAdapter(this, ac.getHouseList(false, false));
 
-        lv = (DropDownListView)findViewById(R.id.houseList);
+        lv = (ListView)findViewById(R.id.houseList);
         lv.setAdapter(adapter);
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle b = new Bundle();
                 b.putInt("position", position);
-                startActivity(new Intent().setClass(getApplicationContext(), HouseDetailsActivity.class).putExtras(b));
-            }
-        });
-
-        //滑到底部刷新
-        lv.setOnBottomListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new GetDataTask(true, false).execute();
+                startActivity(new Intent().setClass(HousesListActivity.this, HouseDetailsActivity.class).putExtras(b));
             }
         });
     }

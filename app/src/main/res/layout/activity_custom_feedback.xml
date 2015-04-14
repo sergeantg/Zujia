@@ -14,11 +14,10 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="wrap_content"
+        style="@style/Button"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_custom_certification_submit"
         android:id="@+id/btnSubmit"
-        android:layout_below="@+id/eTxtFeedback"
-        android:layout_centerHorizontal="true"
-        android:background="@color/orange" />
+        android:layout_below="@+id/eTxtFeedback"/>
 </RelativeLayout>

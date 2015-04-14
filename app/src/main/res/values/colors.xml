@@ -11,4 +11,9 @@
     <color name="color3">#c16b84</color>
     <color name="color4">#6e5d7f</color>
     <color name="color5">#355c7d</color>
+    <color name="grey_line">#dddddd</color>
+    <color name="grey_font">#8e8b86</color>
+    <color name="me_avater_circle">#717171</color>
+    <color name="house_info_bottom_bg">#b4333333</color>
+    <color name="around_btn">#cdc0c0</color>
 </resources>

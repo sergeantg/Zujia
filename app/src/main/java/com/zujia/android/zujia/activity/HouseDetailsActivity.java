@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.zujia.android.zujia.AppContext;
 import com.zujia.android.zujia.R;
 import com.zujia.android.zujia.model.HouseInfo;
@@ -19,23 +21,28 @@ public class HouseDetailsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house_details);
 
-        position = getIntent().getExtras().getInt("postition");
+        position = getIntent().getExtras().getInt("position");
         info = ((AppContext)getApplication()).getHouseList(false, false).get(position);
         initView(info);
     }
 
 
     private void initView(HouseInfo i){
+
+
+        Picasso.with(this).load(i.getAppliance()).into((ImageView)findViewById(R.id.zhaopian));
+        ((TextView) findViewById(R.id.txtVLocation)).setText(i.getDizhi());
+
         ((TextView)findViewById(R.id.txtVTitle)).setText(i.getTitile());
         ((TextView)findViewById(R.id.txtVState)).setText(i.getState());
-        ((TextView)findViewById(R.id.txtVRent)).setText(new Integer(i.getType()).toString() + new Integer(i.getTarea()).toString());
-        ((TextView)findViewById(R.id.txtVLocation)).setText(i.getAddress());
-        ((TextView)findViewById(R.id.txtVFloor)).setText(new Integer(i.getFloor()).toString() + "楼" + "(" + ")共" + new Integer(i.getTfloor()).toString() + "层" + i.getElevator());
-        ((TextView)findViewById(R.id.txtVDate)).setText(i.getDate().toString());
-        ((TextView)findViewById(R.id.txtVDecoration)).setText(i.getDecoration());
-        ((TextView)findViewById(R.id.txtVAppliance)).setText(i.getAppliance());
-        ((TextView)findViewById(R.id.txtVFurniture)).setText(i.getFurniture());
-        ((TextView)findViewById(R.id.txtVOther)).setText(i.getOther());
+        ((TextView)findViewById(R.id.txtVSize)).setText(i.getFangxing());
+        ((TextView)findViewById(R.id.txtVRent)).setText(i.getChuzu());
+        ((TextView)findViewById(R.id.txtVFloor)).setText(i.getLouceng());
+        ((TextView)findViewById(R.id.txtVDate)).setText(i.getZuizaoruzhu());
+        ((TextView)findViewById(R.id.txtVDecoration)).setText(i.getZhuangxiuqingkuang());
+        ((TextView)findViewById(R.id.txtVAppliance)).setText(i.getJiadian());
+        ((TextView)findViewById(R.id.txtVFurniture)).setText(i.getJiaju());
+        ((TextView)findViewById(R.id.txtVOther)).setText(i.getQita());
         ((TextView)findViewById(R.id.txtVDescribtion)).setText(i.getDescription());
 
 

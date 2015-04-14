@@ -14,12 +14,13 @@
         android:layout_weight="4" />
 
     <EditText
-        style="@style/ItemStyle"
+        style="@style/edit_box"
         android:drawableLeft="@drawable/search"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:id="@+id/editText_search_key"
         android:hint="@string/hint_search_search"
-        android:textSize="@dimen/medium_text" />
+        android:textSize="@dimen/medium_text"
+        android:layout_width="fill_parent" />
 
     <Space
         android:layout_width="20px"
@@ -93,18 +94,33 @@
         android:layout_height="20px"
         android:layout_weight="1" />
 
-    <Button
-
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
-        style="@style/LineButton"
-        android:text="@string/btn_search_around"
-        android:id="@+id/button3"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/button2"
-        android:onClick="aroundClick"
-        android:gravity="center" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <View android:layout_height="1dp"
+            android:layout_width="fill_parent"
+            android:background="@color/around_btn"/>
+        <Button
+
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            style="@style/LineButton"
+            android:text="@string/btn_search_around"
+            android:id="@+id/button3"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/button2"
+            android:onClick="aroundClick"
+            android:gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp" />
+        <View android:layout_height="1dp"
+            android:layout_width="fill_parent"
+            android:background="@color/around_btn"/>
+    </LinearLayout>
 
     <Space
         android:layout_width="20px"

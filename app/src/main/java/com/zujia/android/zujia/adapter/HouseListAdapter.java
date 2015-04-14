@@ -21,10 +21,13 @@ public class HouseListAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
 
     public List<HouseInfo> list;
+    private Context c;
 
     public HouseListAdapter(Context context, List<HouseInfo> l) {
         this.list = l;
+
         this.mInflater = LayoutInflater.from(context);
+        c = context;
     }
 
     //viewHolder
@@ -34,13 +37,16 @@ public class HouseListAdapter extends BaseAdapter {
         public ImageView detail;
         public TextView des;
         public ImageView avater;
+        public TextView money;
+        public TextView date;
 
     }
 
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return list.size();
+        //return list.size();
+        return 10;
     }
 
     @Override
@@ -58,6 +64,7 @@ public class HouseListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        HouseInfo t = list.get(position);
         ViewHodler holder = null;
         if (convertView == null) {
 
@@ -68,8 +75,10 @@ public class HouseListAdapter extends BaseAdapter {
             holder.title = (TextView) convertView.findViewById(R.id.txtVTitle);
             holder.distance = (TextView) convertView.findViewById(R.id.txtVDistance);
             holder.detail = (ImageView) convertView.findViewById(R.id.imgVDetail);
-            holder.avater = (ImageView) convertView.findViewById(R.id.imgVLandlordAvater);
+            holder.avater = (ImageView) convertView.findViewById(R.id.imgVAvater);
             holder.des = (TextView) convertView.findViewById(R.id.txtVDetailDes);
+            holder.date = (TextView) convertView.findViewById(R.id.date);
+            holder.money = (TextView) convertView.findViewById(R.id.money);
             convertView.setTag(holder);
 
         } else {
@@ -77,11 +86,11 @@ public class HouseListAdapter extends BaseAdapter {
             holder = (ViewHodler) convertView.getTag();
         }
 
-        holder.title.setText(list.get(position).getTitile());
-        //holder.distance.setText(list.get(position).getDis);
-        //holder.detail
-        //holder.des.setText(
-        //holder.avater
+        holder.title.setText(t.getTitile());
+        holder.distance.setText(t.getJuli());
+        holder.detail.setImageDrawable(c.getDrawable(R.drawable.house_detail));
+        holder.des.setText(t.getMiaoshu());
+        //holder.avater.setImageDrawable(c.getDrawable(R.drawable.));
 
         return convertView;
     }

@@ -1,255 +1,290 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.zujia.android.zujia.activity.HouseDetailsActivity">
 
-    <ImageSwitcher
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/zhaopian"
+                android:src="@drawable/house_detail"
+                android:scaleType="fitStart"
+                android:adjustViewBounds="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtVTitle"
+                android:textColor="@color/brown"
+                android:textSize="@dimen/large_text"
+                android:text="八里台地铁旁温馨白领公寓"
+                android:layout_margin="15dp"
+                android:layout_gravity="center_horizontal" />
+
+            <View style="@style/ItemSplitter" />
+
+            <RelativeLayout style="@style/ItemStyle">
+
+                <TextView
+                    android:drawableLeft="@drawable/location"
+                    android:text="南开区八里台"
+                    android:id="@+id/txtVAddress"
+                    android:textSize="@dimen/medium_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true" />
+
+                <ImageView
+                    style="@style/ItemRightIconStyle"
+                    android:src="@drawable/arrow_right" />
+            </RelativeLayout>
+
+            <View style="@style/ItemSplitter" />
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+
+                <TableRow
+                    style="@style/HouseInfoTableRow">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtV_house_detail_state"
+                        android:layout_gravity="right"
+                        android:textSize="@dimen/medium_text"
+                        android:textColor="@color/grey_font" />
+
+                    <TextView
+                        style="@style/HouseInfoTableRowContent"
+                        android:text="New Text"
+                        android:layout_weight="1"
+                        android:id="@+id/txtVState"
+                        android:textColor="@color/font_orange" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/HouseInfoTableRow">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtV_house_detail_type"
+                        android:layout_gravity="right"
+                        android:textSize="@dimen/medium_text"
+                        android:textColor="@color/grey_font" />
+
+                    <TextView
+                        style="@style/HouseInfoTableRowContent"
+                        android:text="New Text"
+                        android:layout_weight="1"
+                        android:id="@+id/txtVSize"/>
+                </TableRow>
+
+                <TableRow
+                    style="@style/HouseInfoTableRow">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtV_house_detail_rent"
+                        android:layout_gravity="right"
+                        android:textSize="@dimen/medium_text"
+                        android:textColor="@color/grey_font" />
+
+                    <TextView
+                        style="@style/HouseInfoTableRowContent"
+                        android:text="New Text"
+                        android:layout_weight="1"
+                        android:id="@+id/txtVRent"/>
+                </TableRow>
+
+                <TableRow
+                    style="@style/HouseInfoTableRow">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtV_house_detail_floor"
+                        android:layout_gravity="right"
+                        android:textSize="@dimen/medium_text"
+                        android:textColor="@color/grey_font" />
+
+                    <TextView
+                        style="@style/HouseInfoTableRowContent"
+                        android:text="New Text"
+                        android:layout_weight="1"
+                        android:id="@+id/txtVFloor"/>
+                </TableRow>
+
+                <TableRow
+                    style="@style/HouseInfoTableRow">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtV_house_detail_date"
+                        android:layout_gravity="right"
+                        android:textSize="@dimen/medium_text"
+                        android:textColor="@color/grey_font" />
+
+                    <TextView
+                        style="@style/HouseInfoTableRowContent"
+                        android:text="New Text"
+                        android:layout_weight="1"
+                        android:id="@+id/txtVDate"/>
+                </TableRow>
+
+                <TableRow
+                    style="@style/HouseInfoTableRow">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtV_house_detail_decoration"
+                        android:layout_gravity="right"
+                        android:textSize="@dimen/medium_text"
+                        android:textColor="@color/grey_font" />
+
+                    <TextView
+                        style="@style/HouseInfoTableRowContent"
+                        android:text="New Text"
+                        android:layout_weight="1"
+                        android:id="@+id/txtVDecoration"/>
+                </TableRow>
+
+                <TableRow
+                    style="@style/HouseInfoTableRow">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtV_house_detail_furniture"
+                        android:layout_gravity="right"
+                        android:textSize="@dimen/medium_text"
+                        android:textColor="@color/grey_font" />
+
+                    <TextView
+                        style="@style/HouseInfoTableRowContent"
+                        android:text="New Text"
+                        android:layout_weight="1"
+                        android:id="@+id/txtVFurniture" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/HouseInfoTableRow">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtV_house_detail_appliance"
+                        android:layout_gravity="right"
+                        android:textSize="@dimen/medium_text"
+                        android:textColor="@color/grey_font" />
+
+                    <TextView
+                        style="@style/HouseInfoTableRowContent"
+                        android:text="New Text"
+                        android:layout_weight="1"
+                        android:id="@+id/txtVAppliance" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/HouseInfoTableRow">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtV_house_detail_other"
+                        android:layout_gravity="right"
+                        android:textSize="@dimen/medium_text"
+                        android:textColor="@color/grey_font" />
+
+                    <TextView
+                        style="@style/HouseInfoTableRowContent"
+                        android:text="New Text"
+                        android:layout_weight="1"
+                        android:id="@+id/txtVOther"/>
+                </TableRow>
+
+                <TableRow
+                    style="@style/HouseInfoTableRow">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtV_house_detail_description"
+                        android:layout_gravity="right"
+                        android:textSize="@dimen/medium_text"
+                        android:textColor="@color/grey_font" />
+
+                    <TextView
+                        style="@style/HouseInfoTableRowContent"
+                        android:text="New Text"
+                        android:layout_weight="1"
+                        android:id="@+id/txtVDescribtion"/>
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imageSwitcher" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtVTitle" />
-
-
-
-    <RelativeLayout style="@style/ItemStyle">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView5"
-            style="@style/ItemLeftIconStyle"
-            android:src="@drawable/location_icon" />
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentBottom="true"
+        android:background="@color/house_info_bottom_bg">
 
         <TextView
-            style="@style/ItemTextStyle"
-            android:text="南开区八里台"
-            android:layout_toRightOf="@+id/imageView5"
-            android:id="@+id/txtVAddress" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/textView10"
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_text"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
 
-        <ImageView
-            style="@style/ItemRightIconStyle"
-            android:src="@drawable/arrow_right" />
-    </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/textView11"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/medium_text"
+            android:textColor="@color/white"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" />
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_margin="10dp">
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px"
+            android:layout_weight="1" />
 
-        <TableRow
-            style="@style/ItemStyle"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_house_detail_contact"
+            android:id="@+id/button4"
+            style="@style/Button"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical" />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="房屋状态"
-                android:layout_gravity="right"
-                android:textSize="@dimen/large_text" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:layout_weight="1"
-                android:textSize="@dimen/medium_text"
-                android:id="@+id/txtVState" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            style="@style/ItemStyle">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtV_house_detail_type"
-                android:layout_gravity="right"
-                android:textSize="@dimen/large_text"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:layout_weight="1"
-                android:textSize="@dimen/medium_text"
-                android:id="@+id/txtVSize" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            style="@style/ItemStyle">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtV_house_detail_rent"
-                android:layout_gravity="right"
-                android:textSize="@dimen/large_text"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:layout_weight="1"
-                android:textSize="@dimen/medium_text"
-                android:id="@+id/txtVRent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            style="@style/ItemStyle">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtV_house_detail_floor"
-                android:layout_gravity="right"
-                android:textSize="@dimen/large_text"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:layout_weight="1"
-                android:textSize="@dimen/medium_text"
-                android:id="@+id/txtVFloor" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            style="@style/ItemStyle">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtV_house_detail_date"
-                android:layout_gravity="right"
-                android:textSize="@dimen/large_text"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:layout_weight="1"
-                android:textSize="@dimen/medium_text"
-                android:id="@+id/txtVDate" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            style="@style/ItemStyle">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtV_house_detail_decoration"
-                android:layout_gravity="right"
-                android:textSize="@dimen/large_text"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:layout_weight="1"
-                android:textSize="@dimen/medium_text"
-                android:id="@+id/txtVDecoration" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            style="@style/ItemStyle">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtV_house_detail_furniture"
-                android:layout_gravity="right"
-                android:textSize="@dimen/large_text"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:layout_weight="1"
-                android:textSize="@dimen/medium_text"
-                android:id="@+id/txtVFurniture" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            style="@style/ItemStyle">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtV_house_detail_appliance"
-                android:layout_gravity="right"
-                android:textSize="@dimen/large_text"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:layout_weight="1"
-                android:textSize="@dimen/medium_text"
-                android:id="@+id/txtVAppliance" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            style="@style/ItemStyle">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtV_house_detail_other"
-                android:layout_gravity="right"
-                android:textSize="@dimen/large_text"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:layout_weight="1"
-                android:textSize="@dimen/medium_text"
-                android:id="@+id/txtVOther" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            style="@style/ItemStyle">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txtV_house_detail_description"
-                android:layout_gravity="right"
-                android:textSize="@dimen/large_text"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:layout_weight="1"
-                android:textSize="@dimen/medium_text"
-                android:id="@+id/txtVDescribtion" />
-        </TableRow>
-    </TableLayout>
-
-</LinearLayout>
+</RelativeLayout>

@@ -10,12 +10,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.special.ResideMenu.ResideMenu;
+import com.special.ResideMenu.ResideMenuItem;
 import com.zujia.android.zujia.AppContext;
 import com.zujia.android.zujia.R;
 import com.zujia.android.zujia.activity.custom.CustomMainActivity;
@@ -43,6 +46,10 @@ public class LoginActivity extends Activity{
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private ResideMenu resideMenu;
+    private ResideMenuItem joinItem;
+    private ResideMenuItem aboutItem;
+    private ResideMenuItem feedbackItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +81,37 @@ public class LoginActivity extends Activity{
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        initMenu();
     }
 
 
+    private void initMenu(){
+        // attach to current activity;
+        resideMenu = new ResideMenu(this);
+        resideMenu.setBackground(R.drawable.landing_page_menu);
+        resideMenu.attachToActivity(this);
+
+        joinItem = new ResideMenuItem(this, R.drawable.blank, "加入租家帮");
+        aboutItem = new ResideMenuItem(this, R.drawable.blank, "关于我们");
+        feedbackItem = new ResideMenuItem(this, R.drawable.blank, "意见反馈");
+        resideMenu.addMenuItem(joinItem);
+        resideMenu.addMenuItem(aboutItem);
+        resideMenu.addMenuItem(feedbackItem);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return resideMenu.dispatchTouchEvent(ev);
+    }
+
+    public void menuClick(View v){
+        resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
+    }
+
+    public void signinClick(View v){
+        startActivity(new Intent().setClass(this, SigninActivity.class));
+    }
     /**
      * Attempts to sign in or register the account specified by the login form.
      * If there are form errors (invalid phone, missing fields, etc.), the
@@ -125,14 +160,14 @@ public class LoginActivity extends Activity{
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(new Integer(phone), password);
+            mAuthTask = new UserLoginTask(phone, password);
             mAuthTask.execute((Void) null);
         }
     }
 
     private boolean isPhoneValid(String phone) {
         //TODO: Replace this with your own logic
-        return phone.contains("@");
+        return true;
     }
 
     private boolean isPasswordValid(String password) {
@@ -182,10 +217,10 @@ public class LoginActivity extends Activity{
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Integer> {
 
-        private final int mPhone;
+        private final String mPhone;
         private final String mPassword;
 
-        UserLoginTask(int phone, String password) {
+        UserLoginTask(String phone, String password) {
             mPhone = phone;
             mPassword = password;
         }
@@ -217,10 +252,7 @@ public class LoginActivity extends Activity{
                 case 1:
                     mPasswordView.setError(getString(R.string.error_incorrect_password));
                     mPasswordView.requestFocus();
-                    break;
-                case 2:
-                    mPasswordView.setError(getString(R.string.error_incorrect_password));
-                    mPasswordView.requestFocus();
+                    finish();
                     break;
             }
         }

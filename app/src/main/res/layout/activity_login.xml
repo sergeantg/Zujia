@@ -1,155 +1,197 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:gravity="center_horizontal"
-    android:orientation="vertical" android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.zujia.android.zujia.activity.LoginActivity">
 
-    <!-- Login progress -->
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/logo" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <!-- Login progress -->
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/menu"
+            android:layout_gravity="left"
+            android:background="@null"
+            android:onClick="menuClick"/>
+
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:layout_gravity="center_horizontal" />
 
 
-    <Space
-        android:layout_width="20px"
-        android:layout_height="20px"
-        android:layout_weight="1" />
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px"
+            android:layout_weight="2" />
 
-    <ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp" android:visibility="gone" />
+        <ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" android:visibility="gone" />
 
-    <ScrollView android:id="@+id/login_form" android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp">
-
-        <LinearLayout android:id="@+id/phone_login_form" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:orientation="vertical">
+        <LinearLayout android:id="@+id/login_form" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical"
+            android:background="@drawable/login_form_background">
 
             <EditText android:id="@+id/phone" android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:hint="@string/editText_login_account"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:drawableLeft="@drawable/account"
+                android:drawableLeft="@drawable/profile"
                 android:inputType="phone"
-                android:textSize="@dimen/medium_text" />
+                android:textSize="@dimen/medium_text"
+                android:background="@null"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColorHint="@color/grey_font" />
+
+            <View style="@style/ItemSplitter" />
 
             <EditText android:id="@+id/password" android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:hint="@string/editText_login_password"
                 android:maxLines="1" android:singleLine="true"
                 android:imeOptions="actionUnspecified" android:inputType="textPassword"
-                android:drawableLeft="@drawable/password"
-                android:textSize="@dimen/medium_text" />
-
-            <Button android:id="@+id/phone_sign_in_button"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="@string/btn_login_login"
-                style="@style/Button" />
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_marginTop="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txtV_login_forget_password"
-                    android:layout_alignParentLeft="true"
-                    android:textSize="@dimen/medium_text"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txtV_login_sign_up"
-                    android:layout_alignParentRight="true"
-                    android:textSize="@dimen/medium_text" />
-            </RelativeLayout>
+                android:drawableLeft="@drawable/lock"
+                android:textSize="@dimen/medium_text"
+                android:background="@null"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColorHint="@color/grey_font" />
 
         </LinearLayout>
-    </ScrollView>
 
-    <Space
-        android:layout_width="20px"
-        android:layout_height="20px"
-        android:layout_weight="1" />
+        <Button android:id="@+id/phone_sign_in_button"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/btn_login_login"
+            style="@style/Button"
+            android:layout_marginTop="10dp" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txtV_login_other_account"
-            android:layout_gravity="center_vertical"
-            android:textSize="@dimen/medium_text" />
+            android:layout_marginTop="5dp">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/weixin"
-            style="@style/RingButton" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtV_login_forget_password"
+                android:layout_alignParentLeft="true"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/brown" />
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/weibo"
-            style="@style/RingButton" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtV_login_sign_up"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/brown"
+                android:onClick="signinClick"/>
+        </RelativeLayout>
 
-        <ImageButton
-            android:layout_width="wrap_content"
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtV_login_other_account"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/brown" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/weixin"
+                style="@style/RingButton" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/weibo"
+                style="@style/RingButton" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/qq"
+                style="@style/RingButton" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/qq"
-            style="@style/RingButton" />
+            android:orientation="horizontal"
+            android:divider="@drawable/login_menu_divider">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtV_login_search_house"
+                android:textSize="@dimen/large_text"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:clickable="true"
+                android:onClick="searchClick"
+                android:textColor="@color/brown"
+                android:layout_margin="5dp" />
+
+            <View style="@style/VerticalItemSplitter"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtV_login_pub_house"
+                android:textSize="@dimen/large_text"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:clickable="true"
+                android:onClick="pubHouseClick"
+                android:textColor="@color/brown"
+                android:layout_margin="5dp" />
+
+            <View style="@style/VerticalItemSplitter"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtV_login_zujiabang"
+                android:textSize="@dimen/large_text"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:onClick="zujiabangClick"
+                android:textColor="@color/brown"
+                android:layout_margin="5dp" />
+        </LinearLayout>
     </LinearLayout>
 
-    <Space
-        android:layout_width="20px"
-        android:layout_height="20px"
-        android:layout_weight="1" />
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:divider="@drawable/login_menu_divider"
-        android:showDividers="middle">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txtV_login_search_house"
-            android:textSize="@dimen/large_text"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:clickable="true"
-            android:onClick="searchClick" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txtV_login_pub_house"
-            android:textSize="@dimen/large_text"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:clickable="true"
-            android:onClick="pubHouseClick" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txtV_login_zujiabang"
-            android:textSize="@dimen/large_text"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:onClick="zujiabangClick" />
-    </LinearLayout>
 
 </LinearLayout>

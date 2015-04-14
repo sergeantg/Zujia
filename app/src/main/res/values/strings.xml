@@ -84,6 +84,7 @@
 
     <!--house details page-->
     <string name="txtV_house_detail_detail">房屋详情</string>
+    <string name="txtV_house_detail_state">房屋状态:</string>
     <string name="txtV_house_detail_type">房型:</string>
     <string name="txtV_house_detail_rent">出租:</string>
     <string name="txtV_house_detail_floor">楼层:</string>
@@ -93,6 +94,7 @@
     <string name="txtV_house_detail_appliance">家电:</string>
     <string name="txtV_house_detail_other">其他:</string>
     <string name="txtV_house_detail_description">房屋描述:</string>
+    <string name="btn_house_detail_contact">联系房东</string>
 
     <!--action bar title-->
     <string name="action_bar_title_search_item">搜索房屋</string>
@@ -101,8 +103,8 @@
     <string name="action_houses_filter">筛选</string>
     
     <!--login page-->
-    <string name="editText_login_account">请输入手机号</string>
-    <string name="editText_login_password">请输入密码</string>
+    <string name="editText_login_account">    请输入手机号</string>
+    <string name="editText_login_password">    请输入密码</string>
     <string name="btn_login_login">登陆</string>
     <string name="txtV_login_forget_password">忘记密码？</string>
     <string name="txtV_login_sign_up">免费注册</string>
@@ -159,6 +161,7 @@
     <string name="me_main">我</string>
     <string-array name="rent_service">
         <item>房屋管家</item>
+
         <item>搬家</item>
         <item>换锁</item>
         <item>手续</item>
@@ -185,6 +188,7 @@
         <item>律师</item>
     </string-array>
     <string name="title_activity_service_list">ServiceListActivity</string>
+    <string name="title_activity_signin">SigninActivity</string>
 
 
 </resources>

@@ -88,8 +88,10 @@
     <orderEntry type="library" exported="" name="gson-2.3.1" level="project" />
     <orderEntry type="library" exported="" name="picasso-2.5.2" level="project" />
     <orderEntry type="library" exported="" name="circleimageview-1.2.2" level="project" />
+    <orderEntry type="library" exported="" name="residemenu-1.6" level="project" />
     <orderEntry type="library" exported="" name="trinea-android-common-4.2.15" level="project" />
     <orderEntry type="library" exported="" name="BaiduLBS_Android" level="project" />
+    <orderEntry type="library" exported="" name="1_BaiduLBS_Android" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.0.0" level="project" />
     <orderEntry type="library" exported="" name="retrofit-1.9.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-6.5.87" level="project" />
