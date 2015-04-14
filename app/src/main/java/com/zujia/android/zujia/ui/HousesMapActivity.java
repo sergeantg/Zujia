@@ -1,4 +1,4 @@
-package com.zujia.android.zujia.activity.custom;
+package com.zujia.android.zujia.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,19 +8,19 @@ import android.view.MenuItem;
 import com.zujia.android.zujia.R;
 
 
-public class CustomCertificationActivity extends Activity {
+public class HousesMapActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_certification);
+        setContentView(R.layout.activity_houses_map);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_custom_certification, menu);
+        getMenuInflater().inflate(R.menu.menu_houses_map, menu);
         return true;
     }
 

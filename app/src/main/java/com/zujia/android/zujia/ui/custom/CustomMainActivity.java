@@ -1,4 +1,4 @@
-package com.zujia.android.zujia.activity.custom;
+package com.zujia.android.zujia.ui.custom;
 
 import android.app.ActionBar;
 import android.content.Context;
@@ -19,17 +19,16 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.zujia.android.zujia.AppContext;
 import com.zujia.android.zujia.R;
-import com.zujia.android.zujia.activity.LoginActivity;
-import com.zujia.android.zujia.activity.SearchActivity;
-import com.zujia.android.zujia.activity.ServiceSecondMenuItemFragment;
-import com.zujia.android.zujia.activity.SettingActivity;
+import com.zujia.android.zujia.ui.LoginActivity;
+import com.zujia.android.zujia.ui.SearchActivity;
+import com.zujia.android.zujia.ui.ServiceSecondMenuItemFragment;
+import com.zujia.android.zujia.ui.SettingActivity;
 import com.zujia.android.zujia.model.PersonalInfo;
 
 
 public class CustomMainActivity extends FragmentActivity {
 
-    private View [] vv = new View[10];//visability view
-    private View [] vc = new View[5];//color view
+
     private ImageView [] iv = new ImageView[4];
     private TextView title;
     private View titleLeftBtn;
@@ -51,97 +50,14 @@ public class CustomMainActivity extends FragmentActivity {
 
     private void initView(){
 
-        vv[0] = findViewById(R.id.rent_hint);
-        vv[1] = findViewById(R.id.rent_arrow);
-        vv[2] = findViewById(R.id.life_hint);
-        vv[3] = findViewById(R.id.life_arrow);
-        vv[4] = findViewById(R.id.live_hint);
-        vv[5] = findViewById(R.id.live_arrow);
-        vv[6] = findViewById(R.id.appliance_hint);
-        vv[7] = findViewById(R.id.appliance_arrow);
-        vv[8] = findViewById(R.id.furniture_hint);
-        vv[9] = findViewById(R.id.furniture_arrow);
-        vc[0] = findViewById(R.id.layout_rent);
-        vc[1] = findViewById(R.id.layout_live);
-        vc[2] = findViewById(R.id.layout_appliance);
-        vc[3] = findViewById(R.id.layout_furniture);
-        vc[4] = findViewById(R.id.layout_life);
+
 
         title = (TextView)findViewById(R.id.ivTitleName);
         titleLeftBtn = findViewById(R.id.ivTitleBtnLeft);
         fl = (FrameLayout)findViewById(R.id.menu_container);
         acbar = findViewById(R.id.layout_top);
-        final TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
 
         titleLeftBtn.setVisibility(View.GONE);
-
-        tabHost.setup();
-
-        tabHost.addTab(tabHost.newTabSpec("0")
-                .setIndicator(getLayoutInflater().inflate(R.layout.custom_tab_message, null))
-                .setContent(R.id.tab1));
-        tabHost.addTab(tabHost.newTabSpec("1")
-                .setIndicator(getLayoutInflater().inflate(R.layout.custom_tab_contact, null))
-                .setContent(R.id.tab2));
-        tabHost.addTab(tabHost.newTabSpec("2")
-                .setIndicator(getLayoutInflater().inflate(R.layout.custom_tab_zujiabang, null))
-                .setContent(R.id.tab3));
-        tabHost.addTab(tabHost.newTabSpec("3")
-                .setIndicator(getLayoutInflater().inflate(R.layout.custom_tab_me, null))
-                .setContent(R.id.tab4));
-
-        iv[0] = (ImageView)findViewById(R.id.imgV_tab_message);
-        iv[1] = (ImageView)findViewById(R.id.imgV_tab_contact);
-        iv[2] = (ImageView)findViewById(R.id.imgV_tab_zujiabang);
-        iv[3] = (ImageView)findViewById(R.id.imgV_tab_me);
-
-
-
-        for(ImageView i:iv){
-            i.setImageAlpha(40);
-        }
-
-        tabHost.setCurrentTab(0);
-        iv[0].setImageAlpha(255);
-
-        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            public void onTabChanged(String tabId) {
-                ActionBar b = getActionBar();
-
-                for(ImageView i:iv)
-                    i.setImageAlpha(40);
-                titleLeftBtn.setVisibility(View.GONE);
-                toggleVisiable(false, 0, 0);
-                lastPressedItem = -1;
-
-                //当前选项卡点亮
-                iv[new Integer(tabId)].setImageAlpha(255);
-
-                switch (tabId){
-                    case "0":
-                        //b.setTitle(R.string.message_main);
-                        title.setText(R.string.message_main);
-                        acbar.setVisibility(View.VISIBLE);
-                        break;
-                    case "1":
-                        //b.setTitle(R.string.contact_main);
-                        title.setText(R.string.contact_main);
-                        acbar.setVisibility(View.VISIBLE);
-                        break;
-                    case "2":
-                        //b.setTitle(R.string.zujiabang_main);
-                        title.setText(R.string.zujiabang_main);
-                        acbar.setVisibility(View.VISIBLE);
-                        break;
-                    case "3":
-                        //b.setTitle(R.string.me_main);
-                        title.setText(R.string.me_main);
-                        acbar.setVisibility(View.GONE);
-                        break;
-                }
-            }
-        });
-
 
     }
 
@@ -169,26 +85,6 @@ public class CustomMainActivity extends FragmentActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //my tab click methods
-    public void growthClick(View v){
-
-    }
-    public void postWantClick(View v){
-        startActivity(new Intent().setClass(this, CustomPostWantActivity.class));
-    }
-    public void settingClick(View v){
-        startActivity(new Intent().setClass(this, SettingActivity.class));
-    }
-    public void feedbackClick(View v){
-        startActivity(new Intent().setClass(this, CustomFeedbackActivity.class));
-    }
-    public void  aboutClick(View v){
-        startActivity(new Intent().setClass(this, AboutActivity.class));
-    }
-    public void logoutClick(View v){
-        ((AppContext)getApplication()).logout();
-        startActivity(new Intent().setClass(this, LoginActivity.class));
-    }
 
     //discovery tab click methods
     public void menuClick(View v){

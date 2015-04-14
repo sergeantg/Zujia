@@ -1,36 +1,26 @@
-package com.zujia.android.zujia.activity.custom;
+package com.zujia.android.zujia.ui.custom;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 
 import com.zujia.android.zujia.R;
 
-import java.util.Date;
 
-
-public class CustomPostWantActivity extends Activity {
-
-    private String location;
-    private int max;
-    private Date date;
-    private int rooms;
-    private String other;
+public class CustomFeedbackActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_post_want);
+        setContentView(R.layout.activity_custom_feedback);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_custom_post_want, menu);
+        getMenuInflater().inflate(R.menu.menu_custom_feedback, menu);
         return true;
     }
 
@@ -47,9 +37,5 @@ public class CustomPostWantActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void submitClick(View view){
-        location = ((EditText)findViewById(R.id.eTxtLocation)).getText().toString();
     }
 }

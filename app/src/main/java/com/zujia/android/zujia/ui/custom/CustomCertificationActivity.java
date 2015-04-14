@@ -1,31 +1,26 @@
-package com.zujia.android.zujia.activity;
+package com.zujia.android.zujia.ui.custom;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.zujia.android.zujia.AppContext;
 import com.zujia.android.zujia.R;
-import com.zujia.android.zujia.adapter.ServiceListAdapter;
 
-public class ServiceListActivity extends ListActivity {
 
-    ServiceListAdapter adapter;
+public class CustomCertificationActivity extends Activity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_service_list);
-
-        adapter = new ServiceListAdapter(this, ((AppContext)getApplication()).getServiceList(""));
-        setListAdapter(adapter);
+        setContentView(R.layout.activity_custom_certification);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_service_list, menu);
+        getMenuInflater().inflate(R.menu.menu_custom_certification, menu);
         return true;
     }
 

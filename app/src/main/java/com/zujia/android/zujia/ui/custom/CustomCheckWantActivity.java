@@ -1,4 +1,4 @@
-package com.zujia.android.zujia.activity.custom;
+package com.zujia.android.zujia.ui.custom;
 
 import android.app.Activity;
 import android.os.Bundle;

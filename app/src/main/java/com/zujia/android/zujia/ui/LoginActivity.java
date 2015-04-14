@@ -1,4 +1,4 @@
-package com.zujia.android.zujia.activity;
+package com.zujia.android.zujia.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -21,7 +21,7 @@ import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 import com.zujia.android.zujia.AppContext;
 import com.zujia.android.zujia.R;
-import com.zujia.android.zujia.activity.custom.CustomMainActivity;
+import com.zujia.android.zujia.ui.custom.CustomMainActivity;
 
 
 /**

@@ -1,0 +1,174 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="com.zujia.android.zujia.ui.custom.CustomMeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/brown"
+        android:layout_gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/camera"
+                android:background="#00000000"
+                android:layout_margin="10dp"
+                android:onClick="cameraClick" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/imgVAvater"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/avater_round_me"
+                app:border_width="2dp"
+                app:border_color="@color/me_avater_circle"
+                android:layout_margin="10dp"
+                android:layout_gravity="center" />
+
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/write"
+                android:background="#00000000"
+                android:layout_margin="10dp"
+                android:onClick="writeClick" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/txtVName"
+            android:text="李先生"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/medium_text"
+            android:textColor="@color/white"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout style="@style/ItemStyle"
+        android:onClick="postWantClick">
+
+        <TextView
+            style="@style/ItemTextStyle.me_item_text"
+            android:text="@string/btn_postWant"
+            android:textSize="@dimen/medium_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未发布租房需求"
+            android:id="@+id/textView8"
+            android:layout_toLeftOf="@+id/me_post_arrow"
+            style="@style/ItemTextStyle.me_item_hint_text" />
+
+        <ImageView
+            style="@style/ItemRightIconStyle"
+            android:src="@drawable/arrow_right"
+            android:id="@+id/me_post_arrow" />
+    </RelativeLayout>
+
+    <View style="@style/ItemSplitter" />
+
+    <RelativeLayout style="@style/ItemStyle"
+        android:onClick="growthClick">
+
+        <TextView
+            style="@style/ItemTextStyle.me_item_text"
+            android:text="@string/btn_growth"
+            android:textSize="@dimen/medium_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前成长值：1000"
+            android:id="@+id/textView9"
+            android:layout_toLeftOf="@+id/me_growth_arrow"
+            style="@style/ItemTextStyle.me_item_hint_text" />
+
+        <ImageView
+            style="@style/ItemRightIconStyle"
+            android:src="@drawable/arrow_right"
+            android:id="@+id/me_growth_arrow" />
+
+    </RelativeLayout>
+
+    <View style="@style/ItemSplitter" />
+    <View style="@style/ItemGroupSplitter"/>
+    <View style="@style/ItemSplitter" />
+
+    <RelativeLayout style="@style/ItemStyle"
+        android:onClick="settingClick">
+
+        <TextView
+            style="@style/ItemTextStyle.me_item_text"
+            android:text="@string/btn_setting"
+            android:textSize="@dimen/medium_text" />
+
+        <ImageView
+            style="@style/ItemRightIconStyle"
+            android:src="@drawable/arrow_right" />
+    </RelativeLayout>
+
+    <View style="@style/ItemSplitter" />
+
+    <RelativeLayout style="@style/ItemStyle"
+        android:onClick="feedbackClick">
+
+        <TextView
+            style="@style/ItemTextStyle.me_item_text"
+            android:text="@string/btn_feedback"
+            android:textSize="@dimen/medium_text" />
+
+        <ImageView
+            style="@style/ItemRightIconStyle"
+            android:src="@drawable/arrow_right" />
+    </RelativeLayout>
+
+    <View style="@style/ItemSplitter" />
+
+    <RelativeLayout style="@style/ItemStyle"
+        android:onClick="aboutClick">
+
+        <TextView
+            style="@style/ItemTextStyle.me_item_text"
+            android:text="@string/btn_about"
+            android:textSize="@dimen/medium_text" />
+
+        <ImageView
+            style="@style/ItemRightIconStyle"
+            android:src="@drawable/arrow_right" />
+    </RelativeLayout>
+
+    <View style="@style/ItemSplitter" />
+    <View style="@style/ItemGroupSplitter"/>
+    <View style="@style/ItemSplitter" />
+
+    <RelativeLayout style="@style/ItemStyle"
+        android:onClick="logoutClick">
+
+        <TextView
+            style="@style/ItemTextStyle.me_item_text"
+            android:text="@string/btn_logout"
+            android:textSize="@dimen/medium_text" />
+
+        <ImageView
+            style="@style/ItemRightIconStyle"
+            android:src="@drawable/arrow_right" />
+    </RelativeLayout>
+
+</LinearLayout>

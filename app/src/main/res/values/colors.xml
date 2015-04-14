@@ -15,5 +15,7 @@
     <color name="grey_font">#8e8b86</color>
     <color name="me_avater_circle">#717171</color>
     <color name="house_info_bottom_bg">#b4333333</color>
-    <color name="around_btn">#cdc0c0</color>
+
+    <color name="text_trans">#b2ffffff</color>
+
 </resources>

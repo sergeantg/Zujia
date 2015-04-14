@@ -1,30 +1,36 @@
-package com.zujia.android.zujia.activity;
+package com.zujia.android.zujia.ui.custom;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import com.zujia.android.zujia.R;
 
-public class SortActivity extends Activity {
+import java.util.Date;
 
-    //排序方式
-    private int sort = 0;
+
+public class CustomPostWantActivity extends Activity {
+
+    private String location;
+    private int max;
+    private Date date;
+    private int rooms;
+    private String other;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sort);
+        setContentView(R.layout.activity_custom_post_want);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sort, menu);
+        getMenuInflater().inflate(R.menu.menu_custom_post_want, menu);
         return true;
     }
 
@@ -43,31 +49,7 @@ public class SortActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    //响应函数
-    public void defaultClick(View view){
-        sort = 0;
-
-        Bundle b = new Bundle();
-        b.putInt("sort", sort);
-        setResult(2, new Intent().putExtras(b));
-        finish();
+    public void submitClick(View view){
+        location = ((EditText)findViewById(R.id.eTxtLocation)).getText().toString();
     }
-
-    public void moneyClick(View view){
-        sort = 1;
-        Bundle b = new Bundle();
-        b.putInt("sort", sort);
-        setResult(2, new Intent().putExtras(b));
-        finish();
-    }
-
-    public void distanceClick(View view){
-        sort =2;
-        Bundle b = new Bundle();
-        b.putInt("sort", sort);
-        setResult(2, new Intent().putExtras(b));
-        finish();
-    }
-
 }

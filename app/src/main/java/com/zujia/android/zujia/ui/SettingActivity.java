@@ -1,4 +1,4 @@
-package com.zujia.android.zujia.activity;
+package com.zujia.android.zujia.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,20 +7,19 @@ import android.view.MenuItem;
 
 import com.zujia.android.zujia.R;
 
-
-public class HousesMapActivity extends Activity {
+public class SettingActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_houses_map);
+        setContentView(R.layout.activity_custom_setting);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_houses_map, menu);
+        getMenuInflater().inflate(R.menu.menu_custom_setting, menu);
         return true;
     }
 

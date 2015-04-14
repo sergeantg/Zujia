@@ -1,0 +1,178 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zujia.android.zujia.ui.ZujiabangFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="8">
+
+        <View style="@style/ItemSplitter" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:onClick="menuClick"
+            android:id="@+id/layout_rent">
+
+            <ImageView
+                style="@style/ItemLeftIconStyle"
+                android:src="@drawable/rectangle1"
+                android:id="@+id/logo1"
+                android:layout_marginRight="20dp" />
+            <TextView
+                style="@style/service_menu_title_font"
+                android:text="@string/rent_main"
+                android:layout_toEndOf="@id/logo1"
+                android:id="@+id/txtVRentBang"/>
+
+            <TextView
+                style="@style/service_menu_des_font"
+                android:text="@string/rent_list_main"
+                android:layout_toEndOf="@id/logo1" android:layout_below="@+id/txtVRentBang"
+                android:id="@+id/rent_hint" />
+
+            <ImageView
+                style="@style/ItemRightIconStyle"
+                android:src="@drawable/arrow_right"
+                android:id="@+id/rent_arrow" />
+
+        </RelativeLayout>
+
+        <View style="@style/ItemSplitter" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:onClick="menuClick"
+            android:id="@+id/layout_live">
+
+            <ImageView
+                style="@style/ItemLeftIconStyle"
+                android:src="@drawable/rectangle2"
+                android:id="@+id/logo2"
+                android:layout_marginRight="20dp" />
+            <TextView
+                style="@style/service_menu_title_font"
+                android:text="@string/live_main"
+                android:layout_toEndOf="@id/logo2"
+                android:id="@+id/txtVLiveBang"/>
+
+            <TextView
+                style="@style/service_menu_des_font"
+                android:text="@string/live_list_main"
+                android:layout_toEndOf="@id/logo2" android:layout_below="@+id/txtVLiveBang"
+                android:id="@+id/live_hint" />
+
+            <ImageView
+                style="@style/ItemRightIconStyle"
+                android:src="@drawable/arrow_right"
+                android:id="@+id/live_arrow" />
+
+        </RelativeLayout>
+
+        <View style="@style/ItemSplitter" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:onClick="menuClick"
+            android:id="@+id/layout_appliance">
+
+            <ImageView
+                style="@style/ItemLeftIconStyle"
+                android:src="@drawable/rectangle3"
+                android:id="@+id/logo3"
+                android:layout_marginRight="20dp" />
+            <TextView
+                style="@style/service_menu_title_font"
+                android:text="@string/appliance_main"
+                android:layout_toEndOf="@id/logo3"
+                android:id="@+id/txtVApplianceBang"/>
+
+            <TextView
+                style="@style/service_menu_des_font"
+                android:text="@string/appliance_list_main"
+                android:layout_toEndOf="@id/logo3" android:layout_below="@+id/txtVApplianceBang"
+                android:id="@+id/appliance_hint" />
+
+            <ImageView
+                style="@style/ItemRightIconStyle"
+                android:src="@drawable/arrow_right"
+                android:id="@+id/appliance_arrow" />
+
+        </RelativeLayout>
+
+        <View style="@style/ItemSplitter" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:onClick="menuClick"
+            android:nestedScrollingEnabled="false"
+            android:id="@+id/layout_furniture">
+
+            <ImageView
+                style="@style/ItemLeftIconStyle"
+                android:src="@drawable/rectangle4"
+                android:id="@+id/logo4"
+                android:layout_marginRight="20dp" />
+            <TextView
+                style="@style/service_menu_title_font"
+                android:text="@string/furniture_main"
+                android:layout_toEndOf="@id/logo4"
+                android:id="@+id/txtVFurnitureBang"/>
+
+            <TextView
+                style="@style/service_menu_des_font"
+                android:text="@string/furniture_list_main"
+                android:layout_toEndOf="@id/logo4" android:layout_below="@+id/txtVFurnitureBang"
+                android:id="@+id/furniture_hint" />
+
+            <ImageView
+                style="@style/ItemRightIconStyle"
+                android:src="@drawable/arrow_right"
+                android:id="@+id/furniture_arrow" />
+
+        </RelativeLayout>
+
+        <View style="@style/ItemSplitter" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:onClick="menuClick"
+            android:id="@+id/layout_life">
+
+            <ImageView
+                style="@style/ItemLeftIconStyle"
+                android:src="@drawable/rectangle5"
+                android:id="@+id/logo5"
+                android:layout_marginRight="20dp" />
+            <TextView
+                style="@style/service_menu_title_font"
+                android:text="@string/life_main"
+                android:layout_toEndOf="@id/logo5"
+                android:id="@+id/txtVLifeBang"/>
+            <TextView
+                style="@style/service_menu_des_font"
+                android:text="@string/life_list_main"
+                android:layout_below="@+id/txtVLifeBang"
+                android:id="@+id/life_hint"
+                android:layout_toRightOf="@+id/logo5"/>
+
+            <ImageView
+                style="@style/ItemRightIconStyle"
+                android:src="@drawable/arrow_right"
+                android:id="@+id/life_arrow" />
+
+        </RelativeLayout>
+
+        <View style="@style/ItemSplitter" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:id="@+id/menu_container"
+        android:layout_weight="5" />
+
+</FrameLayout>

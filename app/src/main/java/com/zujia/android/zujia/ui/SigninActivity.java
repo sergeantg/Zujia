@@ -1,4 +1,4 @@
-package com.zujia.android.zujia.activity;
+package com.zujia.android.zujia.ui;
 
 import android.app.Activity;
 import android.os.AsyncTask;

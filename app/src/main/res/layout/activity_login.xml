@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.zujia.android.zujia.activity.LoginActivity">
+    tools:context="com.zujia.android.zujia.ui.LoginActivity">
 
     <LinearLayout
         android:layout_width="fill_parent"
